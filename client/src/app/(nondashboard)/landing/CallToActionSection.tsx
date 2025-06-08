@@ -9,12 +9,12 @@ const CallToActionSection = () => {
   return (
     <div className="relative py-24">
       <Image
-        src="/landing-call-to-action.jpg"
+        src="/movingin.jpg"
         alt="Rentiful Search Section Background"
         fill
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
@@ -25,24 +25,24 @@ const CallToActionSection = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0 md:mr-10">
             <h2 className="text-2xl font-bold text-white">
-              Find Your Dream Rental Property
+              Find Your Next Room
             </h2>
           </div>
           <div>
             <p className="text-white mb-3">
-              Discover a wide range of rental properties in your desired
+              Discover a wide range of rooms in your desired
               location.
             </p>
             <div className="flex justify-center md:justify-start gap-4">
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="inline-block text-primary-700 bg-white rounded-lg px-6 py-3 font-semibold hover:bg-primary-500 hover:text-primary-50"
+                className="inline-block text-primary-600 bg-white rounded-lg px-6 py-3 font-semibold hover:bg-primary-500 hover:text-primary-50"
               >
                 Search
               </button>
               <Link
                 href="/signup"
-                className="inline-block text-white bg-secondary-500 rounded-lg px-6 py-3 font-semibold hover:bg-secondary-600"
+                className="inline-block text-white bg-green-600 rounded-lg px-6 py-3 font-semibold hover:bg-secondary-600"
                 scroll={false}
               >
                 Sign Up

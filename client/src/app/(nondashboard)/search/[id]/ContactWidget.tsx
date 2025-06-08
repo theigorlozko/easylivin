@@ -7,6 +7,7 @@ import React from "react";
 const ContactWidget = ({ onOpenModal }: ContactWidgetProps) => {
   const { data: authUser } = useGetAuthUserQuery();
   const router = useRouter();
+  const userRole = authUser?.userRole; // Determine the user role (manager or tenant)
 
   const handleButtonClick = () => {
     if (authUser) {
@@ -30,12 +31,16 @@ const ContactWidget = ({ onOpenModal }: ContactWidgetProps) => {
           </div>
         </div>
       </div>
-      <Button
-        className="w-full bg-primary-700 text-white hover:bg-primary-600"
-        onClick={handleButtonClick}
-      >
-        {authUser ? "Submit Application" : "Sign In to Apply"}
-      </Button>
+
+      {/* Show button only for tenants */}
+      {userRole === "tenant" && (
+        <Button
+          className="w-full bg-primary-700 text-white hover:bg-primary-600"
+          onClick={handleButtonClick}
+        >
+          {authUser ? "Submit Application" : "Sign In to Apply"}
+        </Button>
+      )}
 
       <hr className="my-4" />
       <div className="text-sm">

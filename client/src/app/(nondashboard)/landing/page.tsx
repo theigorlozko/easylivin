@@ -4,13 +4,15 @@ import FeaturesSection from "./FeaturesSection";
 import DiscoverSection from "./DiscoverSection";
 import CallToActionSection from "./CallToActionSection";
 import FooterSection from "./FooterSection";
+import NewRooms from "./NewRooms";
 
 const Landing = () => {
   return (
     <div>
       <HeroSection />
-      <FeaturesSection />
-      <DiscoverSection />
+      {/* <FeaturesSection /> */}
+      <NewRooms/>
+      {/* <DiscoverSection /> */}
       <CallToActionSection />
       <FooterSection />
     </div>

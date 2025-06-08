@@ -40,28 +40,34 @@ const SearchPage = () => {
 
   return (
     <div
-      className="w-full mx-auto px-5 flex flex-col"
-      style={{
+  className='w-full mx-auto px-5 flex flex-col'
+  style={{
         height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}
+>
+  <FiltersBar />
+  <div className="flex flex-col md:flex-row flex-1 gap-3 overflow-y-auto md:overflow-hidden">
+    {/* Sidebar Filters – Desktop Only */}
+    <div
+      className={`transition-all duration-300 ease-in-out overflow-auto hidden md:block ${
+        isFiltersFullOpen ? "md:w-3/12 opacity-100 visible" : "md:w-0 opacity-0 invisible"
+      }`}
     >
-      <FiltersBar />
-      <div className="flex justify-between flex-1 overflow-hidden gap-3 mb-5">
-        <div
-          className={`h-full overflow-auto transition-all duration-300 ease-in-out ${
-            isFiltersFullOpen
-              ? "w-3/12 opacity-100 visible"
-              : "w-0 opacity-0 invisible"
-          }`}
-        >
-          <FiltersFull />
-        </div>
-        <Map />
-        <div className="basis-4/12 overflow-y-auto">
-          <Listings />
-        </div>
-      </div>
+      <FiltersFull />
     </div>
+
+    {/* Map – Hidden on Mobile */}
+    <div className="hidden md:flex md:basis-5/12 grow relative rounded-xl overflow-hidden">
+      <Map />
+    </div>
+
+    {/* Listings – Scrolls on both desktop and mobile */}
+    <div className="w-full md:basis-4/12 overflow-y-auto">
+      <Listings />
+    </div>
+  </div>
+</div>
+
   );
 };
 

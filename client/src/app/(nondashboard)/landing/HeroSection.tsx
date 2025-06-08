@@ -60,7 +60,7 @@ const HeroSection = () => {
         className="object-cover object-center"
         priority
       />
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 15 }}

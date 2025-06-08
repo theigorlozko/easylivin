@@ -13,12 +13,16 @@ import CardCompact from "@/components/CardCompact";
 
 const Listings = () => {
   const { data: authUser } = useGetAuthUserQuery();
+  const userRole = authUser?.userRole; // Determine the user role (manager or tenant)
+
+  // Fetch tenant data only if the user is a tenant
   const { data: tenant } = useGetTenantQuery(
     authUser?.cognitoInfo?.userId || "",
     {
-      skip: !authUser?.cognitoInfo?.userId,
+      skip: userRole !== "tenant", // Skip query if the user is not a tenant
     }
   );
+
   const [addFavorite] = useAddFavoritePropertyMutation();
   const [removeFavorite] = useRemoveFavoritePropertyMutation();
   const viewMode = useAppSelector((state) => state.global.viewMode);
@@ -31,7 +35,7 @@ const Listings = () => {
   } = useGetPropertiesQuery(filters);
 
   const handleFavoriteToggle = async (propertyId: number) => {
-    if (!authUser) return;
+    if (!authUser || userRole !== "tenant") return; // Only tenants can toggle favorites
 
     const isFavorite = tenant?.favorites?.some(
       (fav: Property) => fav.id === propertyId
@@ -54,37 +58,25 @@ const Listings = () => {
   if (isError || !properties) return <div>Failed to fetch properties</div>;
 
   return (
-    <div className="w-full">
+    <div className="px-2 w-full">
       <div className="flex">
-        <div className="p-4 w-full">
+        <div className=" w-full">
           {properties?.map((property) =>
-            viewMode === "grid" ? (
               <Card
                 key={property.id}
                 property={property}
                 isFavorite={
+                  userRole === "tenant" &&
                   tenant?.favorites?.some(
                     (fav: Property) => fav.id === property.id
-                  ) || false
+                  )
                 }
-                onFavoriteToggle={() => handleFavoriteToggle(property.id)}
-                showFavoriteButton={!!authUser}
+                onFavoriteToggle={() =>
+                  userRole === "tenant" && handleFavoriteToggle(property.id)
+                }
+                showFavoriteButton={userRole === "tenant"}
                 propertyLink={`/search/${property.id}`}
               />
-            ) : (
-              <CardCompact
-                key={property.id}
-                property={property}
-                isFavorite={
-                  tenant?.favorites?.some(
-                    (fav: Property) => fav.id === property.id
-                  ) || false
-                }
-                onFavoriteToggle={() => handleFavoriteToggle(property.id)}
-                showFavoriteButton={!!authUser}
-                propertyLink={`/search/${property.id}`}
-              />
-            )
           )}
         </div>
       </div>

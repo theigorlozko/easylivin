@@ -87,14 +87,11 @@ body,
 }
 
 .mapboxgl-popup-content {
-  @apply !bg-primary-700;
-  @apply !rounded-lg;
-  @apply !py-2;
-  @apply !px-3;
+  @apply !bg-transparent !shadow-none !p-0 !rounded-none;
 }
 
-.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
-  @apply !border-b-primary-700;
+.mapboxgl-popup-tip {
+  @apply hidden;
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {

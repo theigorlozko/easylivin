@@ -237,7 +237,7 @@ const FiltersBar = () => {
         </Select>
       </div>
 
-      {/* View Mode */}
+      {/* View Mode
       <div className="flex justify-between items-center gap-4 p-2">
         <div className="flex border rounded-xl">
           <Button
@@ -261,7 +261,7 @@ const FiltersBar = () => {
             <Grid className="w-5 h-5" />
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

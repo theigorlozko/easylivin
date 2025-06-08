@@ -206,59 +206,57 @@ export const createProperty = async (
       ...propertyData
     } = req.body;
 
-    const photoUrls = await Promise.all(
-      files.map(async (file) => {
-        const uploadParams = {
-          Bucket: process.env.S3_BUCKET_NAME!,
-          Key: `properties/${Date.now()}-${file.originalname}`,
-          Body: file.buffer,
-          ContentType: file.mimetype,
-        };
+    // const photoUrls = await Promise.all(
+    //   files.map(async (file) => {
+    //     const uploadParams = {
+    //       Bucket: process.env.S3_BUCKET_NAME!,
+    //       Key: `properties/${Date.now()}-${file.originalname}`,
+    //       Body: file.buffer,
+    //       ContentType: file.mimetype,
+    //     };
 
-        const uploadResult = await new Upload({
-          client: s3Client,
-          params: uploadParams,
-        }).done();
+    //     const uploadResult = await new Upload({
+    //       client: s3Client,
+    //       params: uploadParams,
+    //     }).done();
 
-        return uploadResult.Location;
-      })
-    );
+    //     return uploadResult.Location;
+    //   })
+    // );
 
-    const geocodingUrl = `https://nominatim.openstreetmap.org/search?${new URLSearchParams(
-      {
-        street: address,
-        city,
-        country,
-        postalcode: postalCode,
-        format: "json",
-        limit: "1",
-      }
-    ).toString()}`;
-    const geocodingResponse = await axios.get(geocodingUrl, {
-      headers: {
-        "User-Agent": "RealEstateApp (justsomedummyemail@gmail.com",
-      },
-    });
-    const [longitude, latitude] =
-      geocodingResponse.data[0]?.lon && geocodingResponse.data[0]?.lat
-        ? [
-            parseFloat(geocodingResponse.data[0]?.lon),
-            parseFloat(geocodingResponse.data[0]?.lat),
-          ]
-        : [0, 0];
+    // Format the address for Mapbox
+    const formattedAddress = `${address}, ${city}, ${state}, ${country}, ${postalCode}`.trim();
+    const mapboxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+      formattedAddress
+    )}.json?access_token=${process.env.MAPBOX_ACCESS_TOKEN}&limit=1`;
 
-    // create location
+    const geocodingResponse = await axios.get(mapboxUrl);
+
+    if (
+      !geocodingResponse.data.features ||
+      geocodingResponse.data.features.length === 0
+    ) {
+      res.status(400).json({ message: "No results returned from geocoding service." });
+      return;
+    }
+
+    const [longitude, latitude] = geocodingResponse.data.features[0].center;
+
+    if (!longitude || !latitude) {
+      res.status(400).json({ message: "Invalid geolocation data received." });
+    }
+
+    // Create location
     const [location] = await prisma.$queryRaw<Location[]>`
       INSERT INTO "Location" (address, city, state, country, "postalCode", coordinates)
       VALUES (${address}, ${city}, ${state}, ${country}, ${postalCode}, ST_SetSRID(ST_MakePoint(${longitude}, ${latitude}), 4326))
       RETURNING id, address, city, state, country, "postalCode", ST_AsText(coordinates) as coordinates;
     `;
 
-    // create property
+    // Create property
     const newProperty = await prisma.property.create({
       data: {
         ...propertyData,
-        photoUrls,
         locationId: location.id,
         managerCognitoId,
         amenities:
