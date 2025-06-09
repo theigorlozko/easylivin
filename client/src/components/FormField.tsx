@@ -85,6 +85,7 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
           <Textarea
             placeholder={placeholder}
             {...field}
+            value={field.value ?? ""}
             rows={3}
             className={`border-gray-200 p-4 ${inputClassName}`}
           />
@@ -141,6 +142,7 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
             credits={false}
           />
         );
+        
       case "number":
         return (
           <Input

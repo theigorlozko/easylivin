@@ -206,6 +206,13 @@ export const createProperty = async (
       ...propertyData
     } = req.body;
 
+    const {
+      availableDay,
+      availableMonth,
+      availableYear,
+      ...cleanedData
+    } = propertyData;
+
     // const photoUrls = await Promise.all(
     //   files.map(async (file) => {
     //     const uploadParams = {
@@ -253,15 +260,22 @@ export const createProperty = async (
       RETURNING id, address, city, state, country, "postalCode", ST_AsText(coordinates) as coordinates;
     `;
 
+console.log(req.body); // see what’s actually coming in
+
     // Create property
     const newProperty = await prisma.property.create({
       data: {
-        ...propertyData,
+        // ...propertyData,
+        ...cleanedData,
         locationId: location.id,
         managerCognitoId,
         amenities:
           typeof propertyData.amenities === "string"
             ? propertyData.amenities.split(",")
+            : [],
+          roomAmenities:
+          typeof propertyData.roomAmenities === "string"
+            ? propertyData.roomAmenities.split(",")
             : [],
         highlights:
           typeof propertyData.highlights === "string"
@@ -269,12 +283,23 @@ export const createProperty = async (
             : [],
         isPetsAllowed: propertyData.isPetsAllowed === "true",
         isParkingIncluded: propertyData.isParkingIncluded === "true",
+        isOwnerOccupied: propertyData.isOwnerOccupied === "true",
+        isSmokers: propertyData.isSmokers === "true",
         pricePerMonth: parseFloat(propertyData.pricePerMonth),
+        roomNumber: parseInt(propertyData.roomNumber),
         securityDeposit: parseFloat(propertyData.securityDeposit),
         applicationFee: parseFloat(propertyData.applicationFee),
+        roomType: propertyData.roomType, // Add roomType
         beds: parseInt(propertyData.beds),
         baths: parseFloat(propertyData.baths),
         squareFeet: parseInt(propertyData.squareFeet),
+        lookingFor: propertyData.lookingFor,
+        isRefNeeded: propertyData.isRefNeeded === "true",
+        roomAdInfo: propertyData.roomAdInfo || "",
+        minTerm: parseInt(propertyData.minTerm),
+        maxTerm: propertyData.maxTerm ? parseInt(propertyData.maxTerm) : null,
+        leaseLength: propertyData.leaseLength,
+        availableFrom: new Date(propertyData.availableFrom),
       },
       include: {
         location: true,
@@ -284,6 +309,7 @@ export const createProperty = async (
 
     res.status(201).json(newProperty);
   } catch (err: any) {
+    console.error("Create Property Error:", err); // <- ADD THIS LINE
     res
       .status(500)
       .json({ message: `Error creating property: ${err.message}` });

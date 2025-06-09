@@ -1,14 +1,18 @@
 import * as z from "zod";
-import { PropertyTypeEnum } from "@/lib/constants";
+import { PropertyTypeEnum, RoomTypeEnum } from "@/lib/constants";
 
 export const propertySchema = z.object({
   name: z.string().min(1, "Name is required"),
   description: z.string().min(1, "Description is required"),
   pricePerMonth: z.coerce.number().positive().min(0).int(),
   securityDeposit: z.coerce.number().positive().min(0).int(),
+  roomNumber: z.coerce.number().positive().min(0).max(20).int(),
   applicationFee: z.coerce.number().positive().min(0).int(),
   isPetsAllowed: z.boolean(),
+  isRefNeeded: z.boolean(),
   isParkingIncluded: z.boolean(),
+  isOwnerOccupied: z.boolean(),
+  isSmokers: z.boolean(),
   photoUrls: z
     .array(z.instanceof(File))
     .min(1, "At least one photo is required"),
@@ -23,6 +27,16 @@ export const propertySchema = z.object({
   state: z.string().min(1, "State is required"),
   country: z.string().min(1, "Country is required"),
   postalCode: z.string().min(1, "Postal code is required"),
+  roomType: z.nativeEnum(RoomTypeEnum),
+  roomAmenities: z.string().min(1, "Amenities are required"),
+  lookingFor: z.string().min(1, "Criteria is required"),
+  roomAdInfo: z.string().optional(),
+  leaseLength: z.string().min(1, "Lease length is required"),
+  minTerm: z.coerce.number().int().min(1, "Minimum term must be at least 1 month"),
+  maxTerm: z.coerce.number().int().optional(),
+  availableDay: z.string().min(1, "Day is required"),
+  availableMonth: z.string().min(1, "Month is required"),
+  availableYear: z.string().min(4, "Year is required"),
 });
 
 export type PropertyFormData = z.infer<typeof propertySchema>;

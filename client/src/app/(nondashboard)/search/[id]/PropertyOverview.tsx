@@ -103,6 +103,10 @@ const PropertyOverview = ({ propertyId }: PropertyOverviewProps) => {
           attendance zone.
         </p>
       </div>
+      <h2 className="text-xl font-semibold mb-2">
+          Newly added info 
+        </h2>
+        <h3>{property.roomType.replace(/([a-z])([A-Z])/g, '$1 $2')}</h3>
     </div>
   );
 };

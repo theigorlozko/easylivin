@@ -43,6 +43,26 @@ enum Amenity {
   WiFi
 }
 
+enum RoomAmenity {
+  Desk
+  Chair 
+  Wardrobe 
+  ChestOfDrawers 
+  BedsideTable 
+  Mirror 
+  LockOnDoor
+  KeypadEntry
+  MiniFridge
+  PrivateBathroom 
+  SharedBathroom 
+  TV 
+  WifiIncluded
+  Balcony
+  BlackoutCurtains
+  Heating
+  AirConditioning 
+}
+
 enum PropertyType {
   Rooms
   Tinyhouse
@@ -50,6 +70,19 @@ enum PropertyType {
   Villa
   Townhouse
   Cottage
+}
+
+enum RoomType {
+  SingleRoom
+  DoubleRoom
+  TwinRoom 
+  Suite 
+  Studio 
+  SharedRoom 
+  EnsuiteRoom 
+  LoftRoom 
+  AtticRoom 
+  BasementRoom 
 }
 
 enum ApplicationStatus {
@@ -69,18 +102,26 @@ model Property {
   id                Int          @id @default(autoincrement())
   name              String
   description       String
+  roomAdInfo       String
+  lookingFor      String
   pricePerMonth     Float
   securityDeposit   Float
-  applicationFee    Float
+  roomNumber       Float
+  applicationFee    Float?
   photoUrls         String[]
   amenities         Amenity[]
+  roomAmenities    RoomAmenity[]
   highlights        Highlight[]
   isPetsAllowed     Boolean      @default(false)
   isParkingIncluded Boolean      @default(false)
+  isOwnerOccupied  Boolean      @default(false)
+  isSmokers        Boolean      @default(false)
+  isRefNeeded      Boolean      @default(false)
   beds              Int
   baths             Float
   squareFeet        Int
   propertyType      PropertyType
+  roomType          RoomType
   postedDate        DateTime     @default(now())
   averageRating     Float?       @default(0)
   numberOfReviews   Int?         @default(0)
@@ -93,6 +134,10 @@ model Property {
   applications Application[]
   favoritedBy  Tenant[]      @relation("TenantFavorites")
   tenants      Tenant[]      @relation("TenantProperties")
+  leaseLength   String
+  minTerm       Int
+  maxTerm       Int?
+  availableFrom DateTime
 }
 
 model Manager {

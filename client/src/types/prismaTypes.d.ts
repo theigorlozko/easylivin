@@ -93,6 +93,29 @@ export const Amenity: {
 export type Amenity = (typeof Amenity)[keyof typeof Amenity]
 
 
+export const RoomAmenity: {
+  Desk: 'Desk',
+  Chair: 'Chair',
+  Wardrobe: 'Wardrobe',
+  ChestOfDrawers: 'ChestOfDrawers',
+  BedsideTable: 'BedsideTable',
+  Mirror: 'Mirror',
+  LockOnDoor: 'LockOnDoor',
+  KeypadEntry: 'KeypadEntry',
+  MiniFridge: 'MiniFridge',
+  PrivateBathroom: 'PrivateBathroom',
+  SharedBathroom: 'SharedBathroom',
+  TV: 'TV',
+  WifiIncluded: 'WifiIncluded',
+  Balcony: 'Balcony',
+  BlackoutCurtains: 'BlackoutCurtains',
+  Heating: 'Heating',
+  AirConditioning: 'AirConditioning'
+};
+
+export type RoomAmenity = (typeof RoomAmenity)[keyof typeof RoomAmenity]
+
+
 export const PropertyType: {
   Rooms: 'Rooms',
   Tinyhouse: 'Tinyhouse',
@@ -103,6 +126,22 @@ export const PropertyType: {
 };
 
 export type PropertyType = (typeof PropertyType)[keyof typeof PropertyType]
+
+
+export const RoomType: {
+  SingleRoom: 'SingleRoom',
+  DoubleRoom: 'DoubleRoom',
+  TwinRoom: 'TwinRoom',
+  Suite: 'Suite',
+  Studio: 'Studio',
+  SharedRoom: 'SharedRoom',
+  EnsuiteRoom: 'EnsuiteRoom',
+  LoftRoom: 'LoftRoom',
+  AtticRoom: 'AtticRoom',
+  BasementRoom: 'BasementRoom'
+};
+
+export type RoomType = (typeof RoomType)[keyof typeof RoomType]
 
 
 export const ApplicationStatus: {
@@ -133,9 +172,17 @@ export type Amenity = $Enums.Amenity
 
 export const Amenity: typeof $Enums.Amenity
 
+export type RoomAmenity = $Enums.RoomAmenity
+
+export const RoomAmenity: typeof $Enums.RoomAmenity
+
 export type PropertyType = $Enums.PropertyType
 
 export const PropertyType: typeof $Enums.PropertyType
+
+export type RoomType = $Enums.RoomType
+
+export const RoomType: typeof $Enums.RoomType
 
 export type ApplicationStatus = $Enums.ApplicationStatus
 
@@ -1716,6 +1763,7 @@ export namespace Prisma {
     id: number | null
     pricePerMonth: number | null
     securityDeposit: number | null
+    roomNumber: number | null
     applicationFee: number | null
     beds: number | null
     baths: number | null
@@ -1723,12 +1771,15 @@ export namespace Prisma {
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number | null
+    minTerm: number | null
+    maxTerm: number | null
   }
 
   export type PropertySumAggregateOutputType = {
     id: number | null
     pricePerMonth: number | null
     securityDeposit: number | null
+    roomNumber: number | null
     applicationFee: number | null
     beds: number | null
     baths: number | null
@@ -1736,69 +1787,105 @@ export namespace Prisma {
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number | null
+    minTerm: number | null
+    maxTerm: number | null
   }
 
   export type PropertyMinAggregateOutputType = {
     id: number | null
     name: string | null
     description: string | null
+    roomAdInfo: string | null
+    lookingFor: string | null
     pricePerMonth: number | null
     securityDeposit: number | null
+    roomNumber: number | null
     applicationFee: number | null
     isPetsAllowed: boolean | null
     isParkingIncluded: boolean | null
+    isOwnerOccupied: boolean | null
+    isSmokers: boolean | null
+    isRefNeeded: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
     propertyType: $Enums.PropertyType | null
+    roomType: $Enums.RoomType | null
     postedDate: Date | null
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number | null
     managerCognitoId: string | null
+    leaseLength: string | null
+    minTerm: number | null
+    maxTerm: number | null
+    availableFrom: Date | null
   }
 
   export type PropertyMaxAggregateOutputType = {
     id: number | null
     name: string | null
     description: string | null
+    roomAdInfo: string | null
+    lookingFor: string | null
     pricePerMonth: number | null
     securityDeposit: number | null
+    roomNumber: number | null
     applicationFee: number | null
     isPetsAllowed: boolean | null
     isParkingIncluded: boolean | null
+    isOwnerOccupied: boolean | null
+    isSmokers: boolean | null
+    isRefNeeded: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
     propertyType: $Enums.PropertyType | null
+    roomType: $Enums.RoomType | null
     postedDate: Date | null
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number | null
     managerCognitoId: string | null
+    leaseLength: string | null
+    minTerm: number | null
+    maxTerm: number | null
+    availableFrom: Date | null
   }
 
   export type PropertyCountAggregateOutputType = {
     id: number
     name: number
     description: number
+    roomAdInfo: number
+    lookingFor: number
     pricePerMonth: number
     securityDeposit: number
+    roomNumber: number
     applicationFee: number
     photoUrls: number
     amenities: number
+    roomAmenities: number
     highlights: number
     isPetsAllowed: number
     isParkingIncluded: number
+    isOwnerOccupied: number
+    isSmokers: number
+    isRefNeeded: number
     beds: number
     baths: number
     squareFeet: number
     propertyType: number
+    roomType: number
     postedDate: number
     averageRating: number
     numberOfReviews: number
     locationId: number
     managerCognitoId: number
+    leaseLength: number
+    minTerm: number
+    maxTerm: number
+    availableFrom: number
     _all: number
   }
 
@@ -1807,6 +1894,7 @@ export namespace Prisma {
     id?: true
     pricePerMonth?: true
     securityDeposit?: true
+    roomNumber?: true
     applicationFee?: true
     beds?: true
     baths?: true
@@ -1814,12 +1902,15 @@ export namespace Prisma {
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
+    minTerm?: true
+    maxTerm?: true
   }
 
   export type PropertySumAggregateInputType = {
     id?: true
     pricePerMonth?: true
     securityDeposit?: true
+    roomNumber?: true
     applicationFee?: true
     beds?: true
     baths?: true
@@ -1827,69 +1918,105 @@ export namespace Prisma {
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
+    minTerm?: true
+    maxTerm?: true
   }
 
   export type PropertyMinAggregateInputType = {
     id?: true
     name?: true
     description?: true
+    roomAdInfo?: true
+    lookingFor?: true
     pricePerMonth?: true
     securityDeposit?: true
+    roomNumber?: true
     applicationFee?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
+    isOwnerOccupied?: true
+    isSmokers?: true
+    isRefNeeded?: true
     beds?: true
     baths?: true
     squareFeet?: true
     propertyType?: true
+    roomType?: true
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
     managerCognitoId?: true
+    leaseLength?: true
+    minTerm?: true
+    maxTerm?: true
+    availableFrom?: true
   }
 
   export type PropertyMaxAggregateInputType = {
     id?: true
     name?: true
     description?: true
+    roomAdInfo?: true
+    lookingFor?: true
     pricePerMonth?: true
     securityDeposit?: true
+    roomNumber?: true
     applicationFee?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
+    isOwnerOccupied?: true
+    isSmokers?: true
+    isRefNeeded?: true
     beds?: true
     baths?: true
     squareFeet?: true
     propertyType?: true
+    roomType?: true
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
     managerCognitoId?: true
+    leaseLength?: true
+    minTerm?: true
+    maxTerm?: true
+    availableFrom?: true
   }
 
   export type PropertyCountAggregateInputType = {
     id?: true
     name?: true
     description?: true
+    roomAdInfo?: true
+    lookingFor?: true
     pricePerMonth?: true
     securityDeposit?: true
+    roomNumber?: true
     applicationFee?: true
     photoUrls?: true
     amenities?: true
+    roomAmenities?: true
     highlights?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
+    isOwnerOccupied?: true
+    isSmokers?: true
+    isRefNeeded?: true
     beds?: true
     baths?: true
     squareFeet?: true
     propertyType?: true
+    roomType?: true
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
     managerCognitoId?: true
+    leaseLength?: true
+    minTerm?: true
+    maxTerm?: true
+    availableFrom?: true
     _all?: true
   }
 
@@ -1983,23 +2110,35 @@ export namespace Prisma {
     id: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee: number | null
     photoUrls: string[]
     amenities: $Enums.Amenity[]
+    roomAmenities: $Enums.RoomAmenity[]
     highlights: $Enums.Highlight[]
     isPetsAllowed: boolean
     isParkingIncluded: boolean
+    isOwnerOccupied: boolean
+    isSmokers: boolean
+    isRefNeeded: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate: Date
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm: number | null
+    availableFrom: Date
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
     _sum: PropertySumAggregateOutputType | null
@@ -2025,23 +2164,35 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    roomAdInfo?: boolean
+    lookingFor?: boolean
     pricePerMonth?: boolean
     securityDeposit?: boolean
+    roomNumber?: boolean
     applicationFee?: boolean
     photoUrls?: boolean
     amenities?: boolean
+    roomAmenities?: boolean
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
     propertyType?: boolean
+    roomType?: boolean
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
     locationId?: boolean
     managerCognitoId?: boolean
+    leaseLength?: boolean
+    minTerm?: boolean
+    maxTerm?: boolean
+    availableFrom?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | ManagerDefaultArgs<ExtArgs>
     leases?: boolean | Property$leasesArgs<ExtArgs>
@@ -2055,23 +2206,35 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    roomAdInfo?: boolean
+    lookingFor?: boolean
     pricePerMonth?: boolean
     securityDeposit?: boolean
+    roomNumber?: boolean
     applicationFee?: boolean
     photoUrls?: boolean
     amenities?: boolean
+    roomAmenities?: boolean
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
     propertyType?: boolean
+    roomType?: boolean
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
     locationId?: boolean
     managerCognitoId?: boolean
+    leaseLength?: boolean
+    minTerm?: boolean
+    maxTerm?: boolean
+    availableFrom?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | ManagerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
@@ -2080,23 +2243,35 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    roomAdInfo?: boolean
+    lookingFor?: boolean
     pricePerMonth?: boolean
     securityDeposit?: boolean
+    roomNumber?: boolean
     applicationFee?: boolean
     photoUrls?: boolean
     amenities?: boolean
+    roomAmenities?: boolean
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
     propertyType?: boolean
+    roomType?: boolean
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
     locationId?: boolean
     managerCognitoId?: boolean
+    leaseLength?: boolean
+    minTerm?: boolean
+    maxTerm?: boolean
+    availableFrom?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | ManagerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
@@ -2105,26 +2280,38 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    roomAdInfo?: boolean
+    lookingFor?: boolean
     pricePerMonth?: boolean
     securityDeposit?: boolean
+    roomNumber?: boolean
     applicationFee?: boolean
     photoUrls?: boolean
     amenities?: boolean
+    roomAmenities?: boolean
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
     propertyType?: boolean
+    roomType?: boolean
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
     locationId?: boolean
     managerCognitoId?: boolean
+    leaseLength?: boolean
+    minTerm?: boolean
+    maxTerm?: boolean
+    availableFrom?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "locationId" | "managerCognitoId", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "roomAdInfo" | "lookingFor" | "pricePerMonth" | "securityDeposit" | "roomNumber" | "applicationFee" | "photoUrls" | "amenities" | "roomAmenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "isOwnerOccupied" | "isSmokers" | "isRefNeeded" | "beds" | "baths" | "squareFeet" | "propertyType" | "roomType" | "postedDate" | "averageRating" | "numberOfReviews" | "locationId" | "managerCognitoId" | "leaseLength" | "minTerm" | "maxTerm" | "availableFrom", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | ManagerDefaultArgs<ExtArgs>
@@ -2157,23 +2344,35 @@ export namespace Prisma {
       id: number
       name: string
       description: string
+      roomAdInfo: string
+      lookingFor: string
       pricePerMonth: number
       securityDeposit: number
-      applicationFee: number
+      roomNumber: number
+      applicationFee: number | null
       photoUrls: string[]
       amenities: $Enums.Amenity[]
+      roomAmenities: $Enums.RoomAmenity[]
       highlights: $Enums.Highlight[]
       isPetsAllowed: boolean
       isParkingIncluded: boolean
+      isOwnerOccupied: boolean
+      isSmokers: boolean
+      isRefNeeded: boolean
       beds: number
       baths: number
       squareFeet: number
       propertyType: $Enums.PropertyType
+      roomType: $Enums.RoomType
       postedDate: Date
       averageRating: number | null
       numberOfReviews: number | null
       locationId: number
       managerCognitoId: string
+      leaseLength: string
+      minTerm: number
+      maxTerm: number | null
+      availableFrom: Date
     }, ExtArgs["result"]["property"]>
     composites: {}
   }
@@ -2606,23 +2805,35 @@ export namespace Prisma {
     readonly id: FieldRef<"Property", 'Int'>
     readonly name: FieldRef<"Property", 'String'>
     readonly description: FieldRef<"Property", 'String'>
+    readonly roomAdInfo: FieldRef<"Property", 'String'>
+    readonly lookingFor: FieldRef<"Property", 'String'>
     readonly pricePerMonth: FieldRef<"Property", 'Float'>
     readonly securityDeposit: FieldRef<"Property", 'Float'>
+    readonly roomNumber: FieldRef<"Property", 'Float'>
     readonly applicationFee: FieldRef<"Property", 'Float'>
     readonly photoUrls: FieldRef<"Property", 'String[]'>
     readonly amenities: FieldRef<"Property", 'Amenity[]'>
+    readonly roomAmenities: FieldRef<"Property", 'RoomAmenity[]'>
     readonly highlights: FieldRef<"Property", 'Highlight[]'>
     readonly isPetsAllowed: FieldRef<"Property", 'Boolean'>
     readonly isParkingIncluded: FieldRef<"Property", 'Boolean'>
+    readonly isOwnerOccupied: FieldRef<"Property", 'Boolean'>
+    readonly isSmokers: FieldRef<"Property", 'Boolean'>
+    readonly isRefNeeded: FieldRef<"Property", 'Boolean'>
     readonly beds: FieldRef<"Property", 'Int'>
     readonly baths: FieldRef<"Property", 'Float'>
     readonly squareFeet: FieldRef<"Property", 'Int'>
     readonly propertyType: FieldRef<"Property", 'PropertyType'>
+    readonly roomType: FieldRef<"Property", 'RoomType'>
     readonly postedDate: FieldRef<"Property", 'DateTime'>
     readonly averageRating: FieldRef<"Property", 'Float'>
     readonly numberOfReviews: FieldRef<"Property", 'Int'>
     readonly locationId: FieldRef<"Property", 'Int'>
     readonly managerCognitoId: FieldRef<"Property", 'String'>
+    readonly leaseLength: FieldRef<"Property", 'String'>
+    readonly minTerm: FieldRef<"Property", 'Int'>
+    readonly maxTerm: FieldRef<"Property", 'Int'>
+    readonly availableFrom: FieldRef<"Property", 'DateTime'>
   }
     
 
@@ -9919,23 +10130,35 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
+    roomAdInfo: 'roomAdInfo',
+    lookingFor: 'lookingFor',
     pricePerMonth: 'pricePerMonth',
     securityDeposit: 'securityDeposit',
+    roomNumber: 'roomNumber',
     applicationFee: 'applicationFee',
     photoUrls: 'photoUrls',
     amenities: 'amenities',
+    roomAmenities: 'roomAmenities',
     highlights: 'highlights',
     isPetsAllowed: 'isPetsAllowed',
     isParkingIncluded: 'isParkingIncluded',
+    isOwnerOccupied: 'isOwnerOccupied',
+    isSmokers: 'isSmokers',
+    isRefNeeded: 'isRefNeeded',
     beds: 'beds',
     baths: 'baths',
     squareFeet: 'squareFeet',
     propertyType: 'propertyType',
+    roomType: 'roomType',
     postedDate: 'postedDate',
     averageRating: 'averageRating',
     numberOfReviews: 'numberOfReviews',
     locationId: 'locationId',
-    managerCognitoId: 'managerCognitoId'
+    managerCognitoId: 'managerCognitoId',
+    leaseLength: 'leaseLength',
+    minTerm: 'minTerm',
+    maxTerm: 'maxTerm',
+    availableFrom: 'availableFrom'
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
@@ -10103,6 +10326,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'RoomAmenity[]'
+   */
+  export type ListEnumRoomAmenityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoomAmenity[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoomAmenity'
+   */
+  export type EnumRoomAmenityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoomAmenity'>
+    
+
+
+  /**
    * Reference to a field of type 'Highlight[]'
    */
   export type ListEnumHighlightFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Highlight[]'>
@@ -10134,6 +10371,20 @@ export namespace Prisma {
    * Reference to a field of type 'PropertyType[]'
    */
   export type ListEnumPropertyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PropertyType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoomType'
+   */
+  export type EnumRoomTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoomType'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoomType[]'
+   */
+  export type ListEnumRoomTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoomType[]'>
     
 
 
@@ -10189,23 +10440,35 @@ export namespace Prisma {
     id?: IntFilter<"Property"> | number
     name?: StringFilter<"Property"> | string
     description?: StringFilter<"Property"> | string
+    roomAdInfo?: StringFilter<"Property"> | string
+    lookingFor?: StringFilter<"Property"> | string
     pricePerMonth?: FloatFilter<"Property"> | number
     securityDeposit?: FloatFilter<"Property"> | number
-    applicationFee?: FloatFilter<"Property"> | number
+    roomNumber?: FloatFilter<"Property"> | number
+    applicationFee?: FloatNullableFilter<"Property"> | number | null
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
+    roomAmenities?: EnumRoomAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isOwnerOccupied?: BoolFilter<"Property"> | boolean
+    isSmokers?: BoolFilter<"Property"> | boolean
+    isRefNeeded?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
+    roomType?: EnumRoomTypeFilter<"Property"> | $Enums.RoomType
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
     locationId?: IntFilter<"Property"> | number
     managerCognitoId?: StringFilter<"Property"> | string
+    leaseLength?: StringFilter<"Property"> | string
+    minTerm?: IntFilter<"Property"> | number
+    maxTerm?: IntNullableFilter<"Property"> | number | null
+    availableFrom?: DateTimeFilter<"Property"> | Date | string
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     manager?: XOR<ManagerScalarRelationFilter, ManagerWhereInput>
     leases?: LeaseListRelationFilter
@@ -10218,23 +10481,35 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    roomAdInfo?: SortOrder
+    lookingFor?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
-    applicationFee?: SortOrder
+    roomNumber?: SortOrder
+    applicationFee?: SortOrderInput | SortOrder
     photoUrls?: SortOrder
     amenities?: SortOrder
+    roomAmenities?: SortOrder
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isOwnerOccupied?: SortOrder
+    isSmokers?: SortOrder
+    isRefNeeded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
     propertyType?: SortOrder
+    roomType?: SortOrder
     postedDate?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
     locationId?: SortOrder
     managerCognitoId?: SortOrder
+    leaseLength?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrderInput | SortOrder
+    availableFrom?: SortOrder
     location?: LocationOrderByWithRelationInput
     manager?: ManagerOrderByWithRelationInput
     leases?: LeaseOrderByRelationAggregateInput
@@ -10250,23 +10525,35 @@ export namespace Prisma {
     NOT?: PropertyWhereInput | PropertyWhereInput[]
     name?: StringFilter<"Property"> | string
     description?: StringFilter<"Property"> | string
+    roomAdInfo?: StringFilter<"Property"> | string
+    lookingFor?: StringFilter<"Property"> | string
     pricePerMonth?: FloatFilter<"Property"> | number
     securityDeposit?: FloatFilter<"Property"> | number
-    applicationFee?: FloatFilter<"Property"> | number
+    roomNumber?: FloatFilter<"Property"> | number
+    applicationFee?: FloatNullableFilter<"Property"> | number | null
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
+    roomAmenities?: EnumRoomAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isOwnerOccupied?: BoolFilter<"Property"> | boolean
+    isSmokers?: BoolFilter<"Property"> | boolean
+    isRefNeeded?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
+    roomType?: EnumRoomTypeFilter<"Property"> | $Enums.RoomType
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
     locationId?: IntFilter<"Property"> | number
     managerCognitoId?: StringFilter<"Property"> | string
+    leaseLength?: StringFilter<"Property"> | string
+    minTerm?: IntFilter<"Property"> | number
+    maxTerm?: IntNullableFilter<"Property"> | number | null
+    availableFrom?: DateTimeFilter<"Property"> | Date | string
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     manager?: XOR<ManagerScalarRelationFilter, ManagerWhereInput>
     leases?: LeaseListRelationFilter
@@ -10279,23 +10566,35 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    roomAdInfo?: SortOrder
+    lookingFor?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
-    applicationFee?: SortOrder
+    roomNumber?: SortOrder
+    applicationFee?: SortOrderInput | SortOrder
     photoUrls?: SortOrder
     amenities?: SortOrder
+    roomAmenities?: SortOrder
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isOwnerOccupied?: SortOrder
+    isSmokers?: SortOrder
+    isRefNeeded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
     propertyType?: SortOrder
+    roomType?: SortOrder
     postedDate?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
     locationId?: SortOrder
     managerCognitoId?: SortOrder
+    leaseLength?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrderInput | SortOrder
+    availableFrom?: SortOrder
     _count?: PropertyCountOrderByAggregateInput
     _avg?: PropertyAvgOrderByAggregateInput
     _max?: PropertyMaxOrderByAggregateInput
@@ -10310,23 +10609,35 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Property"> | number
     name?: StringWithAggregatesFilter<"Property"> | string
     description?: StringWithAggregatesFilter<"Property"> | string
+    roomAdInfo?: StringWithAggregatesFilter<"Property"> | string
+    lookingFor?: StringWithAggregatesFilter<"Property"> | string
     pricePerMonth?: FloatWithAggregatesFilter<"Property"> | number
     securityDeposit?: FloatWithAggregatesFilter<"Property"> | number
-    applicationFee?: FloatWithAggregatesFilter<"Property"> | number
+    roomNumber?: FloatWithAggregatesFilter<"Property"> | number
+    applicationFee?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
+    roomAmenities?: EnumRoomAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolWithAggregatesFilter<"Property"> | boolean
     isParkingIncluded?: BoolWithAggregatesFilter<"Property"> | boolean
+    isOwnerOccupied?: BoolWithAggregatesFilter<"Property"> | boolean
+    isSmokers?: BoolWithAggregatesFilter<"Property"> | boolean
+    isRefNeeded?: BoolWithAggregatesFilter<"Property"> | boolean
     beds?: IntWithAggregatesFilter<"Property"> | number
     baths?: FloatWithAggregatesFilter<"Property"> | number
     squareFeet?: IntWithAggregatesFilter<"Property"> | number
     propertyType?: EnumPropertyTypeWithAggregatesFilter<"Property"> | $Enums.PropertyType
+    roomType?: EnumRoomTypeWithAggregatesFilter<"Property"> | $Enums.RoomType
     postedDate?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     averageRating?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     numberOfReviews?: IntNullableWithAggregatesFilter<"Property"> | number | null
     locationId?: IntWithAggregatesFilter<"Property"> | number
     managerCognitoId?: StringWithAggregatesFilter<"Property"> | string
+    leaseLength?: StringWithAggregatesFilter<"Property"> | string
+    minTerm?: IntWithAggregatesFilter<"Property"> | number
+    maxTerm?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    availableFrom?: DateTimeWithAggregatesFilter<"Property"> | Date | string
   }
 
   export type ManagerWhereInput = {
@@ -10748,21 +11059,33 @@ export namespace Prisma {
   export type PropertyCreateInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: ManagerCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
@@ -10775,23 +11098,35 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
@@ -10801,21 +11136,33 @@ export namespace Prisma {
   export type PropertyUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: ManagerUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
@@ -10828,23 +11175,35 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
@@ -10855,66 +11214,102 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
   }
 
   export type PropertyUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PropertyUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ManagerCreateInput = {
@@ -11340,6 +11735,17 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
@@ -11353,6 +11759,14 @@ export namespace Prisma {
     has?: $Enums.Amenity | EnumAmenityFieldRefInput<$PrismaModel> | null
     hasEvery?: $Enums.Amenity[] | ListEnumAmenityFieldRefInput<$PrismaModel>
     hasSome?: $Enums.Amenity[] | ListEnumAmenityFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type EnumRoomAmenityNullableListFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoomAmenity[] | ListEnumRoomAmenityFieldRefInput<$PrismaModel> | null
+    has?: $Enums.RoomAmenity | EnumRoomAmenityFieldRefInput<$PrismaModel> | null
+    hasEvery?: $Enums.RoomAmenity[] | ListEnumRoomAmenityFieldRefInput<$PrismaModel>
+    hasSome?: $Enums.RoomAmenity[] | ListEnumRoomAmenityFieldRefInput<$PrismaModel>
     isEmpty?: boolean
   }
 
@@ -11376,6 +11790,13 @@ export namespace Prisma {
     not?: NestedEnumPropertyTypeFilter<$PrismaModel> | $Enums.PropertyType
   }
 
+  export type EnumRoomTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoomType | EnumRoomTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoomTypeFilter<$PrismaModel> | $Enums.RoomType
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11385,17 +11806,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -11458,29 +11868,42 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    roomAdInfo?: SortOrder
+    lookingFor?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
+    roomNumber?: SortOrder
     applicationFee?: SortOrder
     photoUrls?: SortOrder
     amenities?: SortOrder
+    roomAmenities?: SortOrder
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isOwnerOccupied?: SortOrder
+    isSmokers?: SortOrder
+    isRefNeeded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
     propertyType?: SortOrder
+    roomType?: SortOrder
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
     managerCognitoId?: SortOrder
+    leaseLength?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrder
+    availableFrom?: SortOrder
   }
 
   export type PropertyAvgOrderByAggregateInput = {
     id?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
+    roomNumber?: SortOrder
     applicationFee?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
@@ -11488,52 +11911,77 @@ export namespace Prisma {
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrder
   }
 
   export type PropertyMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    roomAdInfo?: SortOrder
+    lookingFor?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
+    roomNumber?: SortOrder
     applicationFee?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isOwnerOccupied?: SortOrder
+    isSmokers?: SortOrder
+    isRefNeeded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
     propertyType?: SortOrder
+    roomType?: SortOrder
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
     managerCognitoId?: SortOrder
+    leaseLength?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrder
+    availableFrom?: SortOrder
   }
 
   export type PropertyMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    roomAdInfo?: SortOrder
+    lookingFor?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
+    roomNumber?: SortOrder
     applicationFee?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isOwnerOccupied?: SortOrder
+    isSmokers?: SortOrder
+    isRefNeeded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
     propertyType?: SortOrder
+    roomType?: SortOrder
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
     managerCognitoId?: SortOrder
+    leaseLength?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrder
+    availableFrom?: SortOrder
   }
 
   export type PropertySumOrderByAggregateInput = {
     id?: SortOrder
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
+    roomNumber?: SortOrder
     applicationFee?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
@@ -11541,6 +11989,8 @@ export namespace Prisma {
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
+    minTerm?: SortOrder
+    maxTerm?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -11593,6 +12043,22 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -11611,6 +12077,16 @@ export namespace Prisma {
     _max?: NestedEnumPropertyTypeFilter<$PrismaModel>
   }
 
+  export type EnumRoomTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoomType | EnumRoomTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoomTypeWithAggregatesFilter<$PrismaModel> | $Enums.RoomType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoomTypeFilter<$PrismaModel>
+    _max?: NestedEnumRoomTypeFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11623,22 +12099,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12015,6 +12475,10 @@ export namespace Prisma {
     set: $Enums.Amenity[]
   }
 
+  export type PropertyCreateroomAmenitiesInput = {
+    set: $Enums.RoomAmenity[]
+  }
+
   export type PropertyCreatehighlightsInput = {
     set: $Enums.Highlight[]
   }
@@ -12093,6 +12557,14 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type PropertyUpdatephotoUrlsInput = {
     set?: string[]
     push?: string | string[]
@@ -12101,6 +12573,11 @@ export namespace Prisma {
   export type PropertyUpdateamenitiesInput = {
     set?: $Enums.Amenity[]
     push?: $Enums.Amenity | $Enums.Amenity[]
+  }
+
+  export type PropertyUpdateroomAmenitiesInput = {
+    set?: $Enums.RoomAmenity[]
+    push?: $Enums.RoomAmenity | $Enums.RoomAmenity[]
   }
 
   export type PropertyUpdatehighlightsInput = {
@@ -12124,16 +12601,12 @@ export namespace Prisma {
     set?: $Enums.PropertyType
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type EnumRoomTypeFieldUpdateOperationsInput = {
+    set?: $Enums.RoomType
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -12703,6 +13176,17 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -12715,6 +13199,13 @@ export namespace Prisma {
     not?: NestedEnumPropertyTypeFilter<$PrismaModel> | $Enums.PropertyType
   }
 
+  export type NestedEnumRoomTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoomType | EnumRoomTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoomTypeFilter<$PrismaModel> | $Enums.RoomType
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -12724,17 +13215,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -12797,6 +13277,22 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -12815,6 +13311,16 @@ export namespace Prisma {
     _max?: NestedEnumPropertyTypeFilter<$PrismaModel>
   }
 
+  export type NestedEnumRoomTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoomType | EnumRoomTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoomType[] | ListEnumRoomTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoomTypeWithAggregatesFilter<$PrismaModel> | $Enums.RoomType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoomTypeFilter<$PrismaModel>
+    _max?: NestedEnumRoomTypeFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -12827,22 +13333,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13217,21 +13707,33 @@ export namespace Prisma {
   export type PropertyCreateWithoutManagerInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
@@ -13243,22 +13745,34 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
@@ -13298,43 +13812,67 @@ export namespace Prisma {
     id?: IntFilter<"Property"> | number
     name?: StringFilter<"Property"> | string
     description?: StringFilter<"Property"> | string
+    roomAdInfo?: StringFilter<"Property"> | string
+    lookingFor?: StringFilter<"Property"> | string
     pricePerMonth?: FloatFilter<"Property"> | number
     securityDeposit?: FloatFilter<"Property"> | number
-    applicationFee?: FloatFilter<"Property"> | number
+    roomNumber?: FloatFilter<"Property"> | number
+    applicationFee?: FloatNullableFilter<"Property"> | number | null
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
+    roomAmenities?: EnumRoomAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isOwnerOccupied?: BoolFilter<"Property"> | boolean
+    isSmokers?: BoolFilter<"Property"> | boolean
+    isRefNeeded?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
+    roomType?: EnumRoomTypeFilter<"Property"> | $Enums.RoomType
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
     locationId?: IntFilter<"Property"> | number
     managerCognitoId?: StringFilter<"Property"> | string
+    leaseLength?: StringFilter<"Property"> | string
+    minTerm?: IntFilter<"Property"> | number
+    maxTerm?: IntNullableFilter<"Property"> | number | null
+    availableFrom?: DateTimeFilter<"Property"> | Date | string
   }
 
   export type PropertyCreateWithoutTenantsInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: ManagerCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
@@ -13346,23 +13884,35 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
@@ -13376,21 +13926,33 @@ export namespace Prisma {
   export type PropertyCreateWithoutFavoritedByInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: ManagerCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
@@ -13402,23 +13964,35 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
@@ -13560,21 +14134,33 @@ export namespace Prisma {
   export type PropertyCreateWithoutLocationInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     manager: ManagerCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
@@ -13586,22 +14172,34 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
@@ -13637,21 +14235,33 @@ export namespace Prisma {
   export type PropertyCreateWithoutApplicationsInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: ManagerCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
@@ -13663,23 +14273,35 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
@@ -13756,21 +14378,33 @@ export namespace Prisma {
   export type PropertyUpdateWithoutApplicationsInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: ManagerUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
@@ -13782,23 +14416,35 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
@@ -13871,21 +14517,33 @@ export namespace Prisma {
   export type PropertyCreateWithoutLeasesInput = {
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: ManagerCreateNestedOneWithoutManagedPropertiesInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
@@ -13897,23 +14555,35 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
@@ -14019,21 +14689,33 @@ export namespace Prisma {
   export type PropertyUpdateWithoutLeasesInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: ManagerUpdateOneRequiredWithoutManagedPropertiesNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
@@ -14045,23 +14727,35 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
@@ -14368,42 +15062,66 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     locationId: number
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
   }
 
   export type PropertyUpdateWithoutManagerInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
@@ -14415,22 +15133,34 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
@@ -14441,22 +15171,34 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ApplicationCreateManyTenantInput = {
@@ -14483,21 +15225,33 @@ export namespace Prisma {
   export type PropertyUpdateWithoutTenantsInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: ManagerUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
@@ -14509,23 +15263,35 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
@@ -14535,43 +15301,67 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PropertyUpdateWithoutFavoritedByInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: ManagerUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
@@ -14583,23 +15373,35 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
@@ -14609,23 +15411,35 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ApplicationUpdateWithoutTenantInput = {
@@ -14696,21 +15510,33 @@ export namespace Prisma {
   export type PropertyUpdateWithoutLocationInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     manager?: ManagerUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
@@ -14722,22 +15548,34 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
@@ -14748,44 +15586,68 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
+    roomAdInfo: string
+    lookingFor: string
     pricePerMonth: number
     securityDeposit: number
-    applicationFee: number
+    roomNumber: number
+    applicationFee?: number | null
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyCreateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isOwnerOccupied?: boolean
+    isSmokers?: boolean
+    isRefNeeded?: boolean
     beds: number
     baths: number
     squareFeet: number
     propertyType: $Enums.PropertyType
+    roomType: $Enums.RoomType
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
     managerCognitoId: string
+    leaseLength: string
+    minTerm: number
+    maxTerm?: number | null
+    availableFrom: Date | string
   }
 
   export type PropertyUncheckedUpdateManyWithoutLocationInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    roomAdInfo?: StringFieldUpdateOperationsInput | string
+    lookingFor?: StringFieldUpdateOperationsInput | string
     pricePerMonth?: FloatFieldUpdateOperationsInput | number
     securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
+    roomNumber?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: NullableFloatFieldUpdateOperationsInput | number | null
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    roomAmenities?: PropertyUpdateroomAmenitiesInput | $Enums.RoomAmenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isOwnerOccupied?: BoolFieldUpdateOperationsInput | boolean
+    isSmokers?: BoolFieldUpdateOperationsInput | boolean
+    isRefNeeded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    roomType?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     managerCognitoId?: StringFieldUpdateOperationsInput | string
+    leaseLength?: StringFieldUpdateOperationsInput | string
+    minTerm?: IntFieldUpdateOperationsInput | number
+    maxTerm?: NullableIntFieldUpdateOperationsInput | number | null
+    availableFrom?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaymentCreateManyLeaseInput = {

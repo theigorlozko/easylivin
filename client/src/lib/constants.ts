@@ -24,6 +24,26 @@ import {
   LucideIcon,
 } from "lucide-react";
 
+export enum RoomAmenityEnum {
+  Desk = "Desk",
+  Chair = "Chair",
+  Wardrobe = "Wardrobe",
+  ChestOfDrawers = "ChestOfDrawers",
+  BedsideTable = "BedsideTable",
+  Mirror = "Mirror",
+  LockOnDoor = "LockOnDoor",
+  KeypadEntry = "KeypadEntry",
+  MiniFridge = "MiniFridge",
+  PrivateBathroom = "PrivateBathroom",
+  SharedBathroom = "SharedBathroom",
+  TV = "TV",
+  WifiIncluded = "WifiIncluded",
+  Balcony = "Balcony",
+  BlackoutCurtains = "BlackoutCurtains",
+  Heating = "Heating",
+  AirConditioning = "AirConditioning",
+}
+
 export enum AmenityEnum {
   WasherDryer = "WasherDryer",
   AirConditioning = "AirConditioning",
@@ -99,6 +119,19 @@ export enum PropertyTypeEnum {
   Villa = "Villa",
   Townhouse = "Townhouse",
   Cottage = "Cottage",
+}
+
+export enum RoomTypeEnum {
+  SingleRoom = "SingleRoom",
+  DoubleRoom = "DoubleRoom",
+  TwinRoom = "TwinRoom",
+  Suite = "Suite",
+  Studio = "Studio",
+  SharedRoom = "SharedRoom",
+  EnsuiteRoom = "EnsuiteRoom",
+  LoftRoom = "LoftRoom",
+  AtticRoom = "AtticRoom",
+  BasementRoom = "BasementRoom"
 }
 
 export const PropertyTypeIcons: Record<PropertyTypeEnum, LucideIcon> = {

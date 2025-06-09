@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import { Form } from "@/components/ui/form";
 import { PropertyFormData, propertySchema } from "@/lib/schemas";
 import { useCreatePropertyMutation, useGetAuthUserQuery } from "@/state/api";
-import { AmenityEnum, HighlightEnum, PropertyTypeEnum } from "@/lib/constants";
+import { AmenityEnum, HighlightEnum, PropertyTypeEnum, RoomAmenityEnum, RoomTypeEnum } from "@/lib/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -22,11 +22,15 @@ const NewProperty = () => {
       description: "",
       pricePerMonth: 1000,
       securityDeposit: 500,
+      roomNumber: 1,
       applicationFee: 100,
-      isPetsAllowed: true,
-      isParkingIncluded: true,
+      isPetsAllowed: false,
+      isParkingIncluded: false,
+      isOwnerOccupied: false,
+      isSmokers: false,
       photoUrls: [],
       amenities: "",
+      roomAmenities: RoomAmenityEnum.Desk,
       highlights: "",
       beds: 1,
       baths: 1,
@@ -36,6 +40,16 @@ const NewProperty = () => {
       state: "",
       country: "",
       postalCode: "",
+      roomType: RoomTypeEnum.SingleRoom, // Set default value to undefined
+      lookingFor: "",
+      isRefNeeded: false,
+      roomAdInfo: "",
+      leaseLength: "12 months",
+      minTerm: 6,
+      maxTerm: 12,
+      availableDay: "",
+      availableMonth: "",
+      availableYear: "",
     },
   });
 
@@ -43,6 +57,9 @@ const NewProperty = () => {
     if (!authUser?.cognitoInfo?.userId) {
       throw new Error("No manager ID found");
     }
+    const { availableDay, availableMonth, availableYear, ...rest } = data;
+    const availableFrom = `${availableYear}-${availableMonth.padStart(2, '0')}-${availableDay.padStart(2, '0')}`;
+// → "2025-06-12"
 
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
@@ -57,6 +74,7 @@ const NewProperty = () => {
         formData.append(key, String(value));
       }
     });
+    formData.append("availableFrom", availableFrom);
 
     formData.append("managerCognitoId", authUser.cognitoInfo.userId);
 
@@ -90,33 +108,9 @@ const NewProperty = () => {
 
             <hr className="my-6 border-gray-200" />
 
-            {/* Fees */}
-            <div className="space-y-6">
-              <h2 className="text-lg font-semibold mb-4">Fees</h2>
-              <CustomFormField
-                name="pricePerMonth"
-                label="Price per Month"
-                type="number"
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <CustomFormField
-                  name="securityDeposit"
-                  label="Security Deposit"
-                  type="number"
-                />
-                <CustomFormField
-                  name="applicationFee"
-                  label="Application Fee"
-                  type="number"
-                />
-              </div>
-            </div>
-
-            <hr className="my-6 border-gray-200" />
-
             {/* Property Details */}
             <div className="space-y-6">
-              <h2 className="text-lg font-semibold mb-4">Property Details</h2>
+              <h2 className="text-lg font-semibold mb-4">Entire Property Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <CustomFormField
                   name="beds"
@@ -130,11 +124,27 @@ const NewProperty = () => {
                 />
                 <CustomFormField
                   name="squareFeet"
-                  label="Square Feet"
+                  label="Square Meter"
                   type="number"
                 />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <CustomFormField
+                  name="propertyType"
+                  label="Property Type"
+                  type="select"
+                  options={Object.keys(PropertyTypeEnum).map((type) => ({
+                    value: type,
+                    label: type,
+                  }))}
+                />
+                <CustomFormField
+                  name="roomNumber"
+                  label="Number of Rooms"
+                  type="number"
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
                 <CustomFormField
                   name="isPetsAllowed"
                   label="Pets Allowed"
@@ -145,28 +155,27 @@ const NewProperty = () => {
                   label="Parking Included"
                   type="switch"
                 />
-              </div>
-              <div className="mt-4">
                 <CustomFormField
-                  name="propertyType"
-                  label="Property Type"
-                  type="select"
-                  options={Object.keys(PropertyTypeEnum).map((type) => ({
-                    value: type,
-                    label: type,
-                  }))}
+                  name="isOwnerOccupied"
+                  label="Owner Occupied"
+                  type="switch"
+                />
+                <CustomFormField
+                  name="isSmokers"
+                  label="Smokers At Property"
+                  type="switch"
                 />
               </div>
             </div>
 
             <hr className="my-6 border-gray-200" />
 
-            {/* Amenities and Highlights */}
-            <div>
+             {/* Amenities and Highlights */}
+             <div>
               <h2 className="text-lg font-semibold mb-4">
-                Amenities and Highlights
+                Property Amenities and Highlights
               </h2>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <CustomFormField
                   name="amenities"
                   label="Amenities"
@@ -189,6 +198,142 @@ const NewProperty = () => {
             </div>
 
             <hr className="my-6 border-gray-200" />
+            {/* Room Details */}
+            <div className="space-y-6">
+              <h2 className="text-lg font-semibold mb-4">Current Occupant Details</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                 add occupants here name, description, age , gender, occupation.
+              </div>
+            </div>
+
+            <hr className="my-6 border-gray-200" />
+            {/* Property Details */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">Room Details</h2>
+              <div className="grid grid-cols-3 gap-4">
+                <CustomFormField
+                  name="availableDay"
+                  label="Day"
+                  type="text"
+                />
+                <CustomFormField
+                  name="availableMonth"
+                  label="Month"
+                  type="text"
+                />
+                <CustomFormField
+                  name="availableYear"
+                  label="Year"
+                  type="text"
+                />
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-4">
+                    <CustomFormField
+                      name="roomType"
+                      label="Room Type"
+                      type="select"
+                      options={Object.keys(RoomTypeEnum).map((type) => ({
+                        value: type,
+                        label: type.replace(/([a-z])([A-Z])/g, '$1 $2'),
+                      }))}
+                    />
+                    <CustomFormField
+                    name="roomAmenities"
+                    label="Room Amenities"
+                    type="select"
+                    options={Object.keys(RoomAmenityEnum).map((roomAmenities) => ({
+                      value: roomAmenities,
+                      label: roomAmenities,
+                    }))}
+                    />
+                </div>
+                <div className="mt-4">
+                <CustomFormField
+                  name="roomAdInfo"
+                  label="Additional Room Information"
+                  type="textarea"
+                />
+              </div>
+            </div>
+
+            <hr className="my-6 border-gray-200" />
+
+             {/* Fees */}
+             <div className="space-y-6">
+              <h2 className="text-lg font-semibold mb-4">Fees and Lease</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <CustomFormField
+                  name="pricePerMonth"
+                  label="Room Price per Month"
+                  type="number"
+                />
+                  <CustomFormField
+                    name="securityDeposit"
+                    label="Security Deposit"
+                    type="number"
+                  />
+                  <CustomFormField
+                    name="applicationFee"
+                    label="Application Fee"
+                    type="number"
+                  />
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                  <CustomFormField
+                    name="leaseLength"
+                    label="Lease Length"
+                    type="select"
+                    options={[
+                      { value: "12 months", label: "12 months" },
+                      { value: "6 months", label: "6 months" },
+                      { value: "Academic Year", label: "Academic Year" },
+                      { value: "Flexible", label: "Flexible" },
+                      { value: "Upon Request", label: "Upon Request" },
+                      { value: "None", label: "None" },
+                    ]}
+                  />
+
+                  <CustomFormField
+                    name="minTerm"
+                    label="Minimum Term (Months)"
+                    type="select"
+                    options={[...Array(12).keys()].map((i) => ({
+                      value: String(i + 1),
+                      label: `${i + 1} month${i === 0 ? "" : "s"}`,
+                    }))}
+                  />
+
+                  <CustomFormField
+                    name="maxTerm"
+                    label="Maximum Term (Months)"
+                    type="select"
+                    options={[...Array(60).keys()].map((i) => ({
+                      value: String(i + 1),
+                      label: `${i + 1} month${i === 0 ? "" : "s"}`,
+                    }))}
+                  />
+                  </div>
+            </div>
+            <hr className="my-6 border-gray-200" />
+
+            {/* Basic Information */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">Tenant Requirments</h2>
+              <div className="space-y-4">
+              <CustomFormField
+                  name="lookingFor"
+                  label="Looking For"
+                  type="textarea"
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
+                <CustomFormField
+                  name="isRefNeeded"
+                  label="References Needed"
+                  type="switch"
+                />
+              </div>
+            </div>
 
             {/* Photos */}
             <div>
@@ -206,7 +351,7 @@ const NewProperty = () => {
             {/* Additional Information */}
             <div className="space-y-6">
               <h2 className="text-lg font-semibold mb-4">
-                Additional Information
+                Property Location
               </h2>
               <CustomFormField name="address" label="Address" />
               <div className="flex justify-between gap-4">
