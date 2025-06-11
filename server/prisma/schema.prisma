@@ -110,7 +110,7 @@ model Property {
   applicationFee    Float?
   photoUrls         String[]
   amenities         Amenity[]
-  roomAmenities    RoomAmenity[]
+  roomAmenities     RoomAmenity[]
   highlights        Highlight[]
   isPetsAllowed     Boolean      @default(false)
   isParkingIncluded Boolean      @default(false)
@@ -119,6 +119,11 @@ model Property {
   isRefNeeded      Boolean      @default(false)
   beds              Int
   baths             Float
+  kitchenDetails     String[]  @default([])
+  communalAreas      String[]  @default([])
+  laundry            String[]  @default([])
+  securityFeatures   String[]  @default([])
+  outdoorSpace       String[]  @default([])
   squareFeet        Int
   propertyType      PropertyType
   roomType          RoomType
@@ -127,6 +132,7 @@ model Property {
   numberOfReviews   Int?         @default(0)
   locationId        Int
   managerCognitoId  String
+  currentOccupantsDescription String? @default("")
 
   location     Location      @relation(fields: [locationId], references: [id])
   manager      Manager       @relation(fields: [managerCognitoId], references: [cognitoId])
@@ -138,6 +144,7 @@ model Property {
   minTerm       Int
   maxTerm       Int?
   availableFrom DateTime
+  reviews     Review[]
 }
 
 model Manager {
@@ -161,6 +168,19 @@ model Tenant {
   favorites    Property[]    @relation("TenantFavorites")
   applications Application[]
   leases       Lease[]
+  reviews     Review[]
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  content     String
+  rating      Int      
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  propertyId  Int
+  tenantId    Int
+  property    Property @relation(fields: [propertyId], references: [id])
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
 }
 
 model Location {

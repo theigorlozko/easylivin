@@ -37,6 +37,12 @@ export const propertySchema = z.object({
   availableDay: z.string().min(1, "Day is required"),
   availableMonth: z.string().min(1, "Month is required"),
   availableYear: z.string().min(4, "Year is required"),
+  currentOccupantsDescription: z.string().optional(),
+  kitchenDetails: z.array(z.string()).optional(),
+  communalAreas: z.array(z.string()).optional(),
+  laundry: z.array(z.string()).optional(),
+  securityFeatures: z.array(z.string()).optional(),
+  outdoorSpace: z.array(z.string()).optional(),
 });
 
 export type PropertyFormData = z.infer<typeof propertySchema>;

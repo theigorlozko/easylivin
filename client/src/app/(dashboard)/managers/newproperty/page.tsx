@@ -10,10 +10,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+
 
 const NewProperty = () => {
   const [createProperty] = useCreatePropertyMutation();
   const { data: authUser } = useGetAuthUserQuery();
+  const router = useRouter();
 
   const form = useForm<PropertyFormData>({
     resolver: zodResolver(propertySchema),
@@ -50,6 +53,7 @@ const NewProperty = () => {
       availableDay: "",
       availableMonth: "",
       availableYear: "",
+      currentOccupantsDescription: "",
     },
   });
 
@@ -78,7 +82,12 @@ const NewProperty = () => {
 
     formData.append("managerCognitoId", authUser.cognitoInfo.userId);
 
-    await createProperty(formData);
+    // After createProperty(formData)
+    const response = await createProperty(formData);
+
+    if ('data' in response && response.data?.id) {
+      router.push(`/managers/successProperty?id=${response.data.id}`);
+    }
   };
 
   return (
@@ -201,8 +210,14 @@ const NewProperty = () => {
             {/* Room Details */}
             <div className="space-y-6">
               <h2 className="text-lg font-semibold mb-4">Current Occupant Details</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                 add occupants here name, description, age , gender, occupation.
+              <div>
+                <CustomFormField
+                  name="currentOccupantsDescription"
+                  label="Describe Current Occupants"
+                  type="textarea"
+                  placeholder="Example: Two males aged 24-25. One is a product manager, the other is in marketing. Both are social and clean."
+                  helpText="Please do not include sensitive information like full names."
+                />
               </div>
             </div>
 
@@ -257,6 +272,78 @@ const NewProperty = () => {
             </div>
 
             <hr className="my-6 border-gray-200" />
+
+            {/* Property Extra Details */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">Property Amenities</h2>
+              <div className="grid grid-cols-3 gap-4">
+              <CustomFormField
+                name="kitchenDetails"
+                label="Kitchen Appliances"
+                type="multi-select"
+                placeholder="Select kitchen appliances"
+                options={[
+                  { label: "Microwave", value: "Microwave" },
+                  { label: "Stove", value: "Stove" },
+                  { label: "Kettle", value: "Kettle" },
+                  { label: "Toaster", value: "Toaster" },
+                  { label: "Fridge", value: "Fridge" },
+                ]}
+              />
+
+              <CustomFormField
+                name="communalAreas"
+                label="Communal Areas"
+                type="multi-select"
+                placeholder="Select communal amenities"
+                options={[
+                  { label: "TV", value: "TV" },
+                  { label: "Board Games", value: "Board Games" },
+                  { label: "Dining Table", value: "Dining Table" },
+                  { label: "Lounge Area", value: "Lounge Area" },
+                ]}
+              />
+
+              <CustomFormField
+                name="laundry"
+                label="Laundry"
+                type="multi-select"
+                placeholder="Select laundry options"
+                options={[
+                  { label: "Washer", value: "Washer" },
+                  { label: "Dryer", value: "Dryer" },
+                  { label: "Washer-Dryer Combo", value: "Washer-Dryer Combo" },
+                ]}
+              />
+
+              <CustomFormField
+                name="securityFeatures"
+                label="Security Features"
+                type="multi-select"
+                placeholder="Select security features"
+                options={[
+                  { label: "Alarm", value: "Alarm" },
+                  { label: "CCTV", value: "CCTV" },
+                  { label: "Keypad Entry", value: "Keypad Entry" },
+                ]}
+              />
+
+              <CustomFormField
+                name="outdoorSpace"
+                label="Outdoor Space"
+                type="multi-select"
+                placeholder="Select outdoor features"
+                options={[
+                  { label: "Garden", value: "Garden" },
+                  { label: "Patio", value: "Patio" },
+                  { label: "Balcony", value: "Balcony" },
+                ]}
+              />
+              </div>
+            </div>
+
+            <hr className="my-6 border-gray-200" />
+
 
              {/* Fees */}
              <div className="space-y-6">

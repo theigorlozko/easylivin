@@ -89,6 +89,10 @@ declare global {
     propertyId: number;
   }
 
+  interface PropertyInformationProps{
+    propertyId: number;
+  }
+
   interface ApplicationCardProps {
     application: Application;
     userType: "manager" | "renter";

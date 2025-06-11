@@ -4,6 +4,7 @@ import Card from "@/components/Card";
 import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import { useGetAuthUserQuery, useGetManagerPropertiesQuery } from "@/state/api";
+import Link from "next/link";
 import React from "react";
 
 const Properties = () => {
@@ -27,14 +28,20 @@ const Properties = () => {
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {managerProperties?.map((property) => (
-          <Card
+          <Link
             key={property.id}
-            property={property}
-            isFavorite={false}
-            onFavoriteToggle={() => {}}
-            showFavoriteButton={false}
-            propertyLink={`/search/${property.id}`} // link that takes to the propery page
-          />
+            href={`/search/${property.id}`}
+            className="block" // ensures the card takes full width inside the grid cell
+            scroll={false}
+          >
+            <Card
+              property={property}
+              isFavorite={false}
+              onFavoriteToggle={() => {}}
+              showFavoriteButton={false}
+              propertyLink="" // no need for internal link now
+            />
+          </Link>
         ))}
       </div>
       {(!managerProperties || managerProperties.length === 0) && (

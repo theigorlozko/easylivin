@@ -50,6 +50,17 @@ body,
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  /* globals.css */
+.review-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.review-rating {
+  color: #f59e0b; /* Yellow for ratings */
+}
 
   .dark {
     --background: 222.2 84% 3.9%;

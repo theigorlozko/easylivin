@@ -300,6 +300,41 @@ console.log(req.body); // see what’s actually coming in
         maxTerm: propertyData.maxTerm ? parseInt(propertyData.maxTerm) : null,
         leaseLength: propertyData.leaseLength,
         availableFrom: new Date(propertyData.availableFrom),
+        currentOccupantsDescription: propertyData.currentOccupantsDescription || "",
+        kitchenDetails:
+          typeof propertyData.kitchenDetails === "string"
+            ? propertyData.kitchenDetails.split(",")
+            : Array.isArray(propertyData.kitchenDetails)
+            ? propertyData.kitchenDetails
+            : [],
+
+        communalAreas:
+          typeof propertyData.communalAreas === "string"
+            ? propertyData.communalAreas.split(",")
+            : Array.isArray(propertyData.communalAreas)
+            ? propertyData.communalAreas
+            : [],
+
+        laundry:
+          typeof propertyData.laundry === "string"
+            ? propertyData.laundry.split(",")
+            : Array.isArray(propertyData.laundry)
+            ? propertyData.laundry
+            : [],
+
+        securityFeatures:
+          typeof propertyData.securityFeatures === "string"
+            ? propertyData.securityFeatures.split(",")
+            : Array.isArray(propertyData.securityFeatures)
+            ? propertyData.securityFeatures
+            : [],
+
+        outdoorSpace:
+          typeof propertyData.outdoorSpace === "string"
+            ? propertyData.outdoorSpace.split(",")
+            : Array.isArray(propertyData.outdoorSpace)
+            ? propertyData.outdoorSpace
+            : [],
       },
       include: {
         location: true,

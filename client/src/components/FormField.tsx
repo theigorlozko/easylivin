@@ -45,7 +45,8 @@ interface FormFieldProps {
     | "switch"
     | "password"
     | "file"
-    | "multi-input";
+    | "multi-input"
+    | "multi-select";
   placeholder?: string;
   options?: { value: string; label: string }[];
   accept?: string;
@@ -57,6 +58,7 @@ interface FormFieldProps {
   multiple?: boolean;
   isIcon?: boolean;
   initialValue?: string | number | boolean | string[];
+  helpText?: string;
 }
 
 export const CustomFormField: React.FC<FormFieldProps> = ({
@@ -73,6 +75,7 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
   multiple = false,
   isIcon = false,
   initialValue,
+  helpText,
 }) => {
   const { control } = useFormContext();
 
@@ -162,6 +165,55 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
             inputClassName={inputClassName}
           />
         );
+        case "multi-select":
+          return (
+            <div className="relative">
+              <Select
+                value=""
+                onValueChange={(val) => {
+                  const currentValues = Array.isArray(field.value) ? field.value : [];
+                  if (currentValues.includes(val)) {
+                    field.onChange(currentValues.filter((item) => item !== val));
+                  } else {
+                    field.onChange([...currentValues, val]);
+                  }
+                }}
+              >
+                <SelectTrigger className={`w-full border-gray-200 p-4 ${inputClassName}`}>
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent className="w-full border-gray-200 shadow">
+                  {options?.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          className="form-checkbox"
+                          checked={(field.value || []).includes(option.value)}
+                          readOnly
+                        />
+                        <span>{option.label}</span>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              {/* Display selected items below */}
+              {Array.isArray(field.value) && field.value.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {field.value.map((val: string) => (
+                    <span
+                      key={val}
+                      className="text-xs bg-primary-100 text-primary-800 px-2 py-1 rounded-full"
+                    >
+                      {val}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
       default:
         return (
           <Input
@@ -206,6 +258,9 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
               value: field.value !== undefined ? field.value : initialValue,
             })}
           </FormControl>
+          {helpText && (
+            <p className="text-xs text-gray-500 mt-1">{helpText}</p>
+          )}
           <FormMessage className="text-red-400" />
         </FormItem>
       )}

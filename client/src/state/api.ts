@@ -348,6 +348,47 @@ export const api = createApi({
         });
       },
     }),
+
+    // Create a review (tenant only)
+      createReview: build.mutation<
+      any, // You can replace this with a Review type if you have it
+      { content: string; rating: number; propertyId: number }
+      >({
+      query: (reviewData) => ({
+        url: "reviews",
+        method: "POST",
+        body: reviewData,
+      }),
+      invalidatesTags: ["PropertyDetails"],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          success: "Review submitted!",
+          error: "Failed to submit review.",
+        });
+      },
+      }),
+
+    // Get all reviews for a property
+    getPropertyReviews: build.query<
+    {
+      id: number;
+      content: string;
+      rating: number;
+      tenant: {
+        id: number;
+        name: string;
+      };
+    }[],
+    number
+    >({
+    query: (propertyId) => `/reviews/${propertyId}`,
+    providesTags: ["PropertyDetails"],
+    async onQueryStarted(_, { queryFulfilled }) {
+      await withToast(queryFulfilled, {
+        error: "Failed to fetch reviews.",
+      });
+    },
+    }),
   }),
 });
 
@@ -369,4 +410,6 @@ export const {
   useGetApplicationsQuery,
   useUpdateApplicationStatusMutation,
   useCreateApplicationMutation,
+  useCreateReviewMutation, 
+  useGetPropertyReviewsQuery 
 } = api;

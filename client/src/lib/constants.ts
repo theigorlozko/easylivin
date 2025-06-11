@@ -22,7 +22,54 @@ import {
   Castle,
   Trees,
   LucideIcon,
+  Utensils,
+  CupSoda,
+  Monitor,
+  Gamepad,
+  Landmark,
+  WashingMachine,
+  AlarmClock,
+  Camera,
+  KeyRound,
+  Shrub,
+  Sun,
+  HelpCircle,
 } from "lucide-react";
+
+export const KitchenIcons: Record<string, any> = {
+  Microwave: Utensils,
+  Stove: Utensils,
+  Kettle: CupSoda,
+  Toaster: Utensils,
+  Fridge: CupSoda,
+};
+
+export const CommunalIcons: Record<string, any> = {
+  TV: Monitor,
+  "Board Games": Gamepad,
+  "Dining Table": Utensils,
+  "Lounge Area": Landmark,
+};
+
+export const LaundryIcons: Record<string, any> = {
+  Washer: WashingMachine,
+  Dryer: WashingMachine,
+  "Washer-Dryer Combo": WashingMachine,
+};
+
+export const SecurityIcons: Record<string, any> = {
+  Alarm: AlarmClock,
+  CCTV: Camera,
+  "Keypad Entry": KeyRound,
+};
+
+export const OutdoorIcons: Record<string, any> = {
+  Garden: Shrub,
+  Patio: Sun,
+  Balcony: Sun,
+};
+
+export const DefaultIcon = HelpCircle;
 
 export enum RoomAmenityEnum {
   Desk = "Desk",

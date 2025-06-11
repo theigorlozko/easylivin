@@ -55,7 +55,7 @@ const Navbar = () => {
         </div>
 
         {/* Center section - hidden on mobile */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:block">
+        {/* <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:block">
           {isDashboardPage && authUser && (
             <Button
               className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 text-sm sm:text-base"
@@ -80,7 +80,7 @@ const Navbar = () => {
               )}
             </Button>
           )}
-        </div>
+        </div> */}
 
         {/* Right section */}
         <div className="flex items-center gap-3 sm:gap-5">
