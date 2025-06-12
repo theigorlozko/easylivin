@@ -78,7 +78,7 @@ const ContactWidget = ({ onOpenModal, property }: ContactWidgetProps) => {
 
       <hr className="my-4" />
       <div className="text-xs text-gray-600">
-        <p className="mb-1">📞 Languages: English, Bahasa</p>
+        <p className="mb-1">📞 Languages: English</p>
         <p>📆 Viewings available by appointment, Mon – Sun</p>
       </div>
     </div>

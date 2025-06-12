@@ -80,8 +80,10 @@ export const createReview = async (req: Request, res: Response): Promise<void> =
     // Calculate the new average rating
     const updatedNumberOfReviews = currentNumberOfReviews + 1;
     const updatedAverageRating =
-      (currentAverageRating * currentNumberOfReviews + Number(rating)) /
+      (currentAverageRating * currentNumberOfReviews + Number(totalRating)) /
       updatedNumberOfReviews;
+
+      console.log(currentAverageRating, currentNumberOfReviews, updatedAverageRating, updatedNumberOfReviews);
 
     // Update the property with the new average rating and number of reviews
     await prisma.property.update({
