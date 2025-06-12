@@ -6,7 +6,26 @@ const prisma = new PrismaClient();
 // Create a new review
 export const createReview = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { content, rating, propertyId } = req.body;
+    const { content,
+      rating,
+      dateFrom,
+      dateTo,
+      managerCommunicationRating,
+      managerResponseRating,
+      managerComment,
+      propertyCleanlinessRating,
+      propertyConditionRating,
+      propertyAmenitiesRating,
+      propertyComment,
+      areaSafetyRating,
+      areaTransportRating,
+      areaServicesRating,
+      areaComment,
+      wouldRecommend,
+      summary,
+      totalRating,
+      propertyId,
+    } = req.body;
 
     if (!req.user) {
       res.status(401).json({ message: "Unauthorized: User not authenticated" });
@@ -17,8 +36,6 @@ export const createReview = async (req: Request, res: Response): Promise<void> =
     const tenant = await prisma.tenant.findUnique({
       where: { cognitoId: req.user.id },
     });
-    console.log("req.user.id:", req.user?.id);
-    console.log("Tenant lookup result:", tenant);
 
     if (!tenant) {
       res.status(403).json({ message: "Only tenants can write reviews" });
@@ -29,12 +46,52 @@ export const createReview = async (req: Request, res: Response): Promise<void> =
       data: {
         content,
         rating: Number(rating),
+        dateFrom: dateFrom ? new Date(dateFrom) : null,
+        dateTo: dateTo ? new Date(dateTo) : null,
+        managerCommunicationRating: Number(managerCommunicationRating),
+        managerResponseRating: Number(managerResponseRating),
+        managerComment,
+        propertyCleanlinessRating: Number(propertyCleanlinessRating),
+        propertyConditionRating: Number(propertyConditionRating),
+        propertyAmenitiesRating: Number(propertyAmenitiesRating),
+        propertyComment,
+        areaSafetyRating: Number(areaSafetyRating),
+        areaTransportRating: Number(areaTransportRating),
+        areaServicesRating: Number(areaServicesRating),
+        areaComment,
+        wouldRecommend: Boolean(wouldRecommend),
+        summary,
+        totalRating: Number(totalRating),
         propertyId: Number(propertyId),
         tenantId: tenant.id,
       },
     });
 
-   
+  // Fetch the current property details
+  const property = await prisma.property.findUnique({
+    where: { id: Number(propertyId) },
+    select: { averageRating: true, numberOfReviews: true },
+  });
+
+  if (property) {
+    const currentAverageRating = property.averageRating || 0;
+    const currentNumberOfReviews = property.numberOfReviews || 0;
+
+    // Calculate the new average rating
+    const updatedNumberOfReviews = currentNumberOfReviews + 1;
+    const updatedAverageRating =
+      (currentAverageRating * currentNumberOfReviews + Number(rating)) /
+      updatedNumberOfReviews;
+
+    // Update the property with the new average rating and number of reviews
+    await prisma.property.update({
+      where: { id: Number(propertyId) },
+      data: {
+        averageRating: updatedAverageRating,
+        numberOfReviews: updatedNumberOfReviews,
+      },
+    });
+  }
 
     res.status(201).json(review);
   } catch (error: any) {
@@ -50,17 +107,7 @@ export const getPropertyReviews = async (req: Request, res: Response): Promise<v
 
     const reviews = await prisma.review.findMany({
       where: { propertyId: Number(propertyId) },
-      include: {
-        tenant: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
+      include: { tenant: true }, // Include tenant info for display
     });
 
     res.status(200).json(reviews);

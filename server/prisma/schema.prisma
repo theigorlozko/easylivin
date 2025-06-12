@@ -175,6 +175,29 @@ model Review {
   id          Int      @id @default(autoincrement())
   content     String
   rating      Int      
+  dateFrom    DateTime?
+  dateTo      DateTime?
+   // Manager/Landlord Ratings
+  managerCommunicationRating Float
+  managerResponseRating      Float
+  managerComment             String?
+
+  // Property Ratings
+  propertyCleanlinessRating  Float
+  propertyConditionRating    Float
+  propertyAmenitiesRating    Float
+  propertyComment            String?
+
+  // Area Ratings
+  areaSafetyRating           Float
+  areaTransportRating        Float
+  areaServicesRating         Float
+  areaComment                String?
+
+  // Recommendation
+  wouldRecommend             Boolean
+  summary String? // e.g., "Good landlord, noisy area"
+  totalRating Float
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   propertyId  Int

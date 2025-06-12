@@ -5874,6 +5874,15 @@ export namespace Prisma {
   export type ReviewAvgAggregateOutputType = {
     id: number | null
     rating: number | null
+    managerCommunicationRating: number | null
+    managerResponseRating: number | null
+    propertyCleanlinessRating: number | null
+    propertyConditionRating: number | null
+    propertyAmenitiesRating: number | null
+    areaSafetyRating: number | null
+    areaTransportRating: number | null
+    areaServicesRating: number | null
+    totalRating: number | null
     propertyId: number | null
     tenantId: number | null
   }
@@ -5881,6 +5890,15 @@ export namespace Prisma {
   export type ReviewSumAggregateOutputType = {
     id: number | null
     rating: number | null
+    managerCommunicationRating: number | null
+    managerResponseRating: number | null
+    propertyCleanlinessRating: number | null
+    propertyConditionRating: number | null
+    propertyAmenitiesRating: number | null
+    areaSafetyRating: number | null
+    areaTransportRating: number | null
+    areaServicesRating: number | null
+    totalRating: number | null
     propertyId: number | null
     tenantId: number | null
   }
@@ -5889,6 +5907,22 @@ export namespace Prisma {
     id: number | null
     content: string | null
     rating: number | null
+    dateFrom: Date | null
+    dateTo: Date | null
+    managerCommunicationRating: number | null
+    managerResponseRating: number | null
+    managerComment: string | null
+    propertyCleanlinessRating: number | null
+    propertyConditionRating: number | null
+    propertyAmenitiesRating: number | null
+    propertyComment: string | null
+    areaSafetyRating: number | null
+    areaTransportRating: number | null
+    areaServicesRating: number | null
+    areaComment: string | null
+    wouldRecommend: boolean | null
+    summary: string | null
+    totalRating: number | null
     createdAt: Date | null
     updatedAt: Date | null
     propertyId: number | null
@@ -5899,6 +5933,22 @@ export namespace Prisma {
     id: number | null
     content: string | null
     rating: number | null
+    dateFrom: Date | null
+    dateTo: Date | null
+    managerCommunicationRating: number | null
+    managerResponseRating: number | null
+    managerComment: string | null
+    propertyCleanlinessRating: number | null
+    propertyConditionRating: number | null
+    propertyAmenitiesRating: number | null
+    propertyComment: string | null
+    areaSafetyRating: number | null
+    areaTransportRating: number | null
+    areaServicesRating: number | null
+    areaComment: string | null
+    wouldRecommend: boolean | null
+    summary: string | null
+    totalRating: number | null
     createdAt: Date | null
     updatedAt: Date | null
     propertyId: number | null
@@ -5909,6 +5959,22 @@ export namespace Prisma {
     id: number
     content: number
     rating: number
+    dateFrom: number
+    dateTo: number
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment: number
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment: number
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment: number
+    wouldRecommend: number
+    summary: number
+    totalRating: number
     createdAt: number
     updatedAt: number
     propertyId: number
@@ -5920,6 +5986,15 @@ export namespace Prisma {
   export type ReviewAvgAggregateInputType = {
     id?: true
     rating?: true
+    managerCommunicationRating?: true
+    managerResponseRating?: true
+    propertyCleanlinessRating?: true
+    propertyConditionRating?: true
+    propertyAmenitiesRating?: true
+    areaSafetyRating?: true
+    areaTransportRating?: true
+    areaServicesRating?: true
+    totalRating?: true
     propertyId?: true
     tenantId?: true
   }
@@ -5927,6 +6002,15 @@ export namespace Prisma {
   export type ReviewSumAggregateInputType = {
     id?: true
     rating?: true
+    managerCommunicationRating?: true
+    managerResponseRating?: true
+    propertyCleanlinessRating?: true
+    propertyConditionRating?: true
+    propertyAmenitiesRating?: true
+    areaSafetyRating?: true
+    areaTransportRating?: true
+    areaServicesRating?: true
+    totalRating?: true
     propertyId?: true
     tenantId?: true
   }
@@ -5935,6 +6019,22 @@ export namespace Prisma {
     id?: true
     content?: true
     rating?: true
+    dateFrom?: true
+    dateTo?: true
+    managerCommunicationRating?: true
+    managerResponseRating?: true
+    managerComment?: true
+    propertyCleanlinessRating?: true
+    propertyConditionRating?: true
+    propertyAmenitiesRating?: true
+    propertyComment?: true
+    areaSafetyRating?: true
+    areaTransportRating?: true
+    areaServicesRating?: true
+    areaComment?: true
+    wouldRecommend?: true
+    summary?: true
+    totalRating?: true
     createdAt?: true
     updatedAt?: true
     propertyId?: true
@@ -5945,6 +6045,22 @@ export namespace Prisma {
     id?: true
     content?: true
     rating?: true
+    dateFrom?: true
+    dateTo?: true
+    managerCommunicationRating?: true
+    managerResponseRating?: true
+    managerComment?: true
+    propertyCleanlinessRating?: true
+    propertyConditionRating?: true
+    propertyAmenitiesRating?: true
+    propertyComment?: true
+    areaSafetyRating?: true
+    areaTransportRating?: true
+    areaServicesRating?: true
+    areaComment?: true
+    wouldRecommend?: true
+    summary?: true
+    totalRating?: true
     createdAt?: true
     updatedAt?: true
     propertyId?: true
@@ -5955,6 +6071,22 @@ export namespace Prisma {
     id?: true
     content?: true
     rating?: true
+    dateFrom?: true
+    dateTo?: true
+    managerCommunicationRating?: true
+    managerResponseRating?: true
+    managerComment?: true
+    propertyCleanlinessRating?: true
+    propertyConditionRating?: true
+    propertyAmenitiesRating?: true
+    propertyComment?: true
+    areaSafetyRating?: true
+    areaTransportRating?: true
+    areaServicesRating?: true
+    areaComment?: true
+    wouldRecommend?: true
+    summary?: true
+    totalRating?: true
     createdAt?: true
     updatedAt?: true
     propertyId?: true
@@ -6052,6 +6184,22 @@ export namespace Prisma {
     id: number
     content: string
     rating: number
+    dateFrom: Date | null
+    dateTo: Date | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment: string | null
+    wouldRecommend: boolean
+    summary: string | null
+    totalRating: number
     createdAt: Date
     updatedAt: Date
     propertyId: number
@@ -6081,6 +6229,22 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     rating?: boolean
+    dateFrom?: boolean
+    dateTo?: boolean
+    managerCommunicationRating?: boolean
+    managerResponseRating?: boolean
+    managerComment?: boolean
+    propertyCleanlinessRating?: boolean
+    propertyConditionRating?: boolean
+    propertyAmenitiesRating?: boolean
+    propertyComment?: boolean
+    areaSafetyRating?: boolean
+    areaTransportRating?: boolean
+    areaServicesRating?: boolean
+    areaComment?: boolean
+    wouldRecommend?: boolean
+    summary?: boolean
+    totalRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     propertyId?: boolean
@@ -6093,6 +6257,22 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     rating?: boolean
+    dateFrom?: boolean
+    dateTo?: boolean
+    managerCommunicationRating?: boolean
+    managerResponseRating?: boolean
+    managerComment?: boolean
+    propertyCleanlinessRating?: boolean
+    propertyConditionRating?: boolean
+    propertyAmenitiesRating?: boolean
+    propertyComment?: boolean
+    areaSafetyRating?: boolean
+    areaTransportRating?: boolean
+    areaServicesRating?: boolean
+    areaComment?: boolean
+    wouldRecommend?: boolean
+    summary?: boolean
+    totalRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     propertyId?: boolean
@@ -6105,6 +6285,22 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     rating?: boolean
+    dateFrom?: boolean
+    dateTo?: boolean
+    managerCommunicationRating?: boolean
+    managerResponseRating?: boolean
+    managerComment?: boolean
+    propertyCleanlinessRating?: boolean
+    propertyConditionRating?: boolean
+    propertyAmenitiesRating?: boolean
+    propertyComment?: boolean
+    areaSafetyRating?: boolean
+    areaTransportRating?: boolean
+    areaServicesRating?: boolean
+    areaComment?: boolean
+    wouldRecommend?: boolean
+    summary?: boolean
+    totalRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     propertyId?: boolean
@@ -6117,13 +6313,29 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     rating?: boolean
+    dateFrom?: boolean
+    dateTo?: boolean
+    managerCommunicationRating?: boolean
+    managerResponseRating?: boolean
+    managerComment?: boolean
+    propertyCleanlinessRating?: boolean
+    propertyConditionRating?: boolean
+    propertyAmenitiesRating?: boolean
+    propertyComment?: boolean
+    areaSafetyRating?: boolean
+    areaTransportRating?: boolean
+    areaServicesRating?: boolean
+    areaComment?: boolean
+    wouldRecommend?: boolean
+    summary?: boolean
+    totalRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     propertyId?: boolean
     tenantId?: boolean
   }
 
-  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "rating" | "createdAt" | "updatedAt" | "propertyId" | "tenantId", ExtArgs["result"]["review"]>
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "rating" | "dateFrom" | "dateTo" | "managerCommunicationRating" | "managerResponseRating" | "managerComment" | "propertyCleanlinessRating" | "propertyConditionRating" | "propertyAmenitiesRating" | "propertyComment" | "areaSafetyRating" | "areaTransportRating" | "areaServicesRating" | "areaComment" | "wouldRecommend" | "summary" | "totalRating" | "createdAt" | "updatedAt" | "propertyId" | "tenantId", ExtArgs["result"]["review"]>
   export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
@@ -6147,6 +6359,22 @@ export namespace Prisma {
       id: number
       content: string
       rating: number
+      dateFrom: Date | null
+      dateTo: Date | null
+      managerCommunicationRating: number
+      managerResponseRating: number
+      managerComment: string | null
+      propertyCleanlinessRating: number
+      propertyConditionRating: number
+      propertyAmenitiesRating: number
+      propertyComment: string | null
+      areaSafetyRating: number
+      areaTransportRating: number
+      areaServicesRating: number
+      areaComment: string | null
+      wouldRecommend: boolean
+      summary: string | null
+      totalRating: number
       createdAt: Date
       updatedAt: Date
       propertyId: number
@@ -6579,6 +6807,22 @@ export namespace Prisma {
     readonly id: FieldRef<"Review", 'Int'>
     readonly content: FieldRef<"Review", 'String'>
     readonly rating: FieldRef<"Review", 'Int'>
+    readonly dateFrom: FieldRef<"Review", 'DateTime'>
+    readonly dateTo: FieldRef<"Review", 'DateTime'>
+    readonly managerCommunicationRating: FieldRef<"Review", 'Float'>
+    readonly managerResponseRating: FieldRef<"Review", 'Float'>
+    readonly managerComment: FieldRef<"Review", 'String'>
+    readonly propertyCleanlinessRating: FieldRef<"Review", 'Float'>
+    readonly propertyConditionRating: FieldRef<"Review", 'Float'>
+    readonly propertyAmenitiesRating: FieldRef<"Review", 'Float'>
+    readonly propertyComment: FieldRef<"Review", 'String'>
+    readonly areaSafetyRating: FieldRef<"Review", 'Float'>
+    readonly areaTransportRating: FieldRef<"Review", 'Float'>
+    readonly areaServicesRating: FieldRef<"Review", 'Float'>
+    readonly areaComment: FieldRef<"Review", 'String'>
+    readonly wouldRecommend: FieldRef<"Review", 'Boolean'>
+    readonly summary: FieldRef<"Review", 'String'>
+    readonly totalRating: FieldRef<"Review", 'Float'>
     readonly createdAt: FieldRef<"Review", 'DateTime'>
     readonly updatedAt: FieldRef<"Review", 'DateTime'>
     readonly propertyId: FieldRef<"Review", 'Int'>
@@ -11557,6 +11801,22 @@ export namespace Prisma {
     id: 'id',
     content: 'content',
     rating: 'rating',
+    dateFrom: 'dateFrom',
+    dateTo: 'dateTo',
+    managerCommunicationRating: 'managerCommunicationRating',
+    managerResponseRating: 'managerResponseRating',
+    managerComment: 'managerComment',
+    propertyCleanlinessRating: 'propertyCleanlinessRating',
+    propertyConditionRating: 'propertyConditionRating',
+    propertyAmenitiesRating: 'propertyAmenitiesRating',
+    propertyComment: 'propertyComment',
+    areaSafetyRating: 'areaSafetyRating',
+    areaTransportRating: 'areaTransportRating',
+    areaServicesRating: 'areaServicesRating',
+    areaComment: 'areaComment',
+    wouldRecommend: 'wouldRecommend',
+    summary: 'summary',
+    totalRating: 'totalRating',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     propertyId: 'propertyId',
@@ -12186,6 +12446,22 @@ export namespace Prisma {
     id?: IntFilter<"Review"> | number
     content?: StringFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
+    dateFrom?: DateTimeNullableFilter<"Review"> | Date | string | null
+    dateTo?: DateTimeNullableFilter<"Review"> | Date | string | null
+    managerCommunicationRating?: FloatFilter<"Review"> | number
+    managerResponseRating?: FloatFilter<"Review"> | number
+    managerComment?: StringNullableFilter<"Review"> | string | null
+    propertyCleanlinessRating?: FloatFilter<"Review"> | number
+    propertyConditionRating?: FloatFilter<"Review"> | number
+    propertyAmenitiesRating?: FloatFilter<"Review"> | number
+    propertyComment?: StringNullableFilter<"Review"> | string | null
+    areaSafetyRating?: FloatFilter<"Review"> | number
+    areaTransportRating?: FloatFilter<"Review"> | number
+    areaServicesRating?: FloatFilter<"Review"> | number
+    areaComment?: StringNullableFilter<"Review"> | string | null
+    wouldRecommend?: BoolFilter<"Review"> | boolean
+    summary?: StringNullableFilter<"Review"> | string | null
+    totalRating?: FloatFilter<"Review"> | number
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
     propertyId?: IntFilter<"Review"> | number
@@ -12198,6 +12474,22 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     rating?: SortOrder
+    dateFrom?: SortOrderInput | SortOrder
+    dateTo?: SortOrderInput | SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    managerComment?: SortOrderInput | SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    propertyComment?: SortOrderInput | SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    areaComment?: SortOrderInput | SortOrder
+    wouldRecommend?: SortOrder
+    summary?: SortOrderInput | SortOrder
+    totalRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     propertyId?: SortOrder
@@ -12213,6 +12505,22 @@ export namespace Prisma {
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     content?: StringFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
+    dateFrom?: DateTimeNullableFilter<"Review"> | Date | string | null
+    dateTo?: DateTimeNullableFilter<"Review"> | Date | string | null
+    managerCommunicationRating?: FloatFilter<"Review"> | number
+    managerResponseRating?: FloatFilter<"Review"> | number
+    managerComment?: StringNullableFilter<"Review"> | string | null
+    propertyCleanlinessRating?: FloatFilter<"Review"> | number
+    propertyConditionRating?: FloatFilter<"Review"> | number
+    propertyAmenitiesRating?: FloatFilter<"Review"> | number
+    propertyComment?: StringNullableFilter<"Review"> | string | null
+    areaSafetyRating?: FloatFilter<"Review"> | number
+    areaTransportRating?: FloatFilter<"Review"> | number
+    areaServicesRating?: FloatFilter<"Review"> | number
+    areaComment?: StringNullableFilter<"Review"> | string | null
+    wouldRecommend?: BoolFilter<"Review"> | boolean
+    summary?: StringNullableFilter<"Review"> | string | null
+    totalRating?: FloatFilter<"Review"> | number
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
     propertyId?: IntFilter<"Review"> | number
@@ -12225,6 +12533,22 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     rating?: SortOrder
+    dateFrom?: SortOrderInput | SortOrder
+    dateTo?: SortOrderInput | SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    managerComment?: SortOrderInput | SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    propertyComment?: SortOrderInput | SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    areaComment?: SortOrderInput | SortOrder
+    wouldRecommend?: SortOrder
+    summary?: SortOrderInput | SortOrder
+    totalRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     propertyId?: SortOrder
@@ -12243,6 +12567,22 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Review"> | number
     content?: StringWithAggregatesFilter<"Review"> | string
     rating?: IntWithAggregatesFilter<"Review"> | number
+    dateFrom?: DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
+    dateTo?: DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
+    managerCommunicationRating?: FloatWithAggregatesFilter<"Review"> | number
+    managerResponseRating?: FloatWithAggregatesFilter<"Review"> | number
+    managerComment?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    propertyCleanlinessRating?: FloatWithAggregatesFilter<"Review"> | number
+    propertyConditionRating?: FloatWithAggregatesFilter<"Review"> | number
+    propertyAmenitiesRating?: FloatWithAggregatesFilter<"Review"> | number
+    propertyComment?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    areaSafetyRating?: FloatWithAggregatesFilter<"Review"> | number
+    areaTransportRating?: FloatWithAggregatesFilter<"Review"> | number
+    areaServicesRating?: FloatWithAggregatesFilter<"Review"> | number
+    areaComment?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    wouldRecommend?: BoolWithAggregatesFilter<"Review"> | boolean
+    summary?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    totalRating?: FloatWithAggregatesFilter<"Review"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     propertyId?: IntWithAggregatesFilter<"Review"> | number
@@ -12977,6 +13317,22 @@ export namespace Prisma {
   export type ReviewCreateInput = {
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     property: PropertyCreateNestedOneWithoutReviewsInput
@@ -12987,6 +13343,22 @@ export namespace Prisma {
     id?: number
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     propertyId: number
@@ -12996,6 +13368,22 @@ export namespace Prisma {
   export type ReviewUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: PropertyUpdateOneRequiredWithoutReviewsNestedInput
@@ -13006,6 +13394,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     propertyId?: IntFieldUpdateOperationsInput | number
@@ -13016,6 +13420,22 @@ export namespace Prisma {
     id?: number
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     propertyId: number
@@ -13025,6 +13445,22 @@ export namespace Prisma {
   export type ReviewUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13033,6 +13469,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     propertyId?: IntFieldUpdateOperationsInput | number
@@ -13843,6 +14295,17 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type PropertyScalarRelationFilter = {
     is?: PropertyWhereInput
     isNot?: PropertyWhereInput
@@ -13857,6 +14320,22 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     rating?: SortOrder
+    dateFrom?: SortOrder
+    dateTo?: SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    managerComment?: SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    propertyComment?: SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    areaComment?: SortOrder
+    wouldRecommend?: SortOrder
+    summary?: SortOrder
+    totalRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     propertyId?: SortOrder
@@ -13866,6 +14345,15 @@ export namespace Prisma {
   export type ReviewAvgOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    totalRating?: SortOrder
     propertyId?: SortOrder
     tenantId?: SortOrder
   }
@@ -13874,6 +14362,22 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     rating?: SortOrder
+    dateFrom?: SortOrder
+    dateTo?: SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    managerComment?: SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    propertyComment?: SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    areaComment?: SortOrder
+    wouldRecommend?: SortOrder
+    summary?: SortOrder
+    totalRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     propertyId?: SortOrder
@@ -13884,6 +14388,22 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     rating?: SortOrder
+    dateFrom?: SortOrder
+    dateTo?: SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    managerComment?: SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    propertyComment?: SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    areaComment?: SortOrder
+    wouldRecommend?: SortOrder
+    summary?: SortOrder
+    totalRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     propertyId?: SortOrder
@@ -13893,8 +14413,31 @@ export namespace Prisma {
   export type ReviewSumOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
+    managerCommunicationRating?: SortOrder
+    managerResponseRating?: SortOrder
+    propertyCleanlinessRating?: SortOrder
+    propertyConditionRating?: SortOrder
+    propertyAmenitiesRating?: SortOrder
+    areaSafetyRating?: SortOrder
+    areaTransportRating?: SortOrder
+    areaServicesRating?: SortOrder
+    totalRating?: SortOrder
     propertyId?: SortOrder
     tenantId?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type LocationCountOrderByAggregateInput = {
@@ -14748,6 +15291,10 @@ export namespace Prisma {
     connect?: TenantWhereUniqueInput
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type PropertyUpdateOneRequiredWithoutReviewsNestedInput = {
     create?: XOR<PropertyCreateWithoutReviewsInput, PropertyUncheckedCreateWithoutReviewsInput>
     connectOrCreate?: PropertyCreateOrConnectWithoutReviewsInput
@@ -15202,6 +15749,31 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumApplicationStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
@@ -15379,6 +15951,22 @@ export namespace Prisma {
   export type ReviewCreateWithoutPropertyInput = {
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     tenant: TenantCreateNestedOneWithoutReviewsInput
@@ -15388,6 +15976,22 @@ export namespace Prisma {
     id?: number
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -15578,6 +16182,22 @@ export namespace Prisma {
     id?: IntFilter<"Review"> | number
     content?: StringFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
+    dateFrom?: DateTimeNullableFilter<"Review"> | Date | string | null
+    dateTo?: DateTimeNullableFilter<"Review"> | Date | string | null
+    managerCommunicationRating?: FloatFilter<"Review"> | number
+    managerResponseRating?: FloatFilter<"Review"> | number
+    managerComment?: StringNullableFilter<"Review"> | string | null
+    propertyCleanlinessRating?: FloatFilter<"Review"> | number
+    propertyConditionRating?: FloatFilter<"Review"> | number
+    propertyAmenitiesRating?: FloatFilter<"Review"> | number
+    propertyComment?: StringNullableFilter<"Review"> | string | null
+    areaSafetyRating?: FloatFilter<"Review"> | number
+    areaTransportRating?: FloatFilter<"Review"> | number
+    areaServicesRating?: FloatFilter<"Review"> | number
+    areaComment?: StringNullableFilter<"Review"> | string | null
+    wouldRecommend?: BoolFilter<"Review"> | boolean
+    summary?: StringNullableFilter<"Review"> | string | null
+    totalRating?: FloatFilter<"Review"> | number
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
     propertyId?: IntFilter<"Review"> | number
@@ -15998,6 +16618,22 @@ export namespace Prisma {
   export type ReviewCreateWithoutTenantInput = {
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     property: PropertyCreateNestedOneWithoutReviewsInput
@@ -16007,6 +16643,22 @@ export namespace Prisma {
     id?: number
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     propertyId: number
@@ -17244,6 +17896,22 @@ export namespace Prisma {
     id?: number
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -17379,6 +18047,22 @@ export namespace Prisma {
   export type ReviewUpdateWithoutPropertyInput = {
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: TenantUpdateOneRequiredWithoutReviewsNestedInput
@@ -17388,6 +18072,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -17397,6 +18097,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -17596,6 +18312,22 @@ export namespace Prisma {
     id?: number
     content: string
     rating: number
+    dateFrom?: Date | string | null
+    dateTo?: Date | string | null
+    managerCommunicationRating: number
+    managerResponseRating: number
+    managerComment?: string | null
+    propertyCleanlinessRating: number
+    propertyConditionRating: number
+    propertyAmenitiesRating: number
+    propertyComment?: string | null
+    areaSafetyRating: number
+    areaTransportRating: number
+    areaServicesRating: number
+    areaComment?: string | null
+    wouldRecommend: boolean
+    summary?: string | null
+    totalRating: number
     createdAt?: Date | string
     updatedAt?: Date | string
     propertyId: number
@@ -17929,6 +18661,22 @@ export namespace Prisma {
   export type ReviewUpdateWithoutTenantInput = {
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: PropertyUpdateOneRequiredWithoutReviewsNestedInput
@@ -17938,6 +18686,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     propertyId?: IntFieldUpdateOperationsInput | number
@@ -17947,6 +18711,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    dateFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dateTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    managerCommunicationRating?: FloatFieldUpdateOperationsInput | number
+    managerResponseRating?: FloatFieldUpdateOperationsInput | number
+    managerComment?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyCleanlinessRating?: FloatFieldUpdateOperationsInput | number
+    propertyConditionRating?: FloatFieldUpdateOperationsInput | number
+    propertyAmenitiesRating?: FloatFieldUpdateOperationsInput | number
+    propertyComment?: NullableStringFieldUpdateOperationsInput | string | null
+    areaSafetyRating?: FloatFieldUpdateOperationsInput | number
+    areaTransportRating?: FloatFieldUpdateOperationsInput | number
+    areaServicesRating?: FloatFieldUpdateOperationsInput | number
+    areaComment?: NullableStringFieldUpdateOperationsInput | string | null
+    wouldRecommend?: BoolFieldUpdateOperationsInput | boolean
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    totalRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     propertyId?: IntFieldUpdateOperationsInput | number

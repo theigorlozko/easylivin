@@ -350,16 +350,13 @@ export const api = createApi({
     }),
 
     // Create a review (tenant only)
-      createReview: build.mutation<
-      any, // You can replace this with a Review type if you have it
-      { content: string; rating: number; propertyId: number }
-      >({
+    createReview: build.mutation({
       query: (reviewData) => ({
-        url: "reviews",
+        url: "/reviews",
         method: "POST",
         body: reviewData,
       }),
-      invalidatesTags: ["PropertyDetails"],
+      invalidatesTags: ["PropertyDetails"], 
       async onQueryStarted(_, { queryFulfilled }) {
         await withToast(queryFulfilled, {
           success: "Review submitted!",
@@ -368,26 +365,10 @@ export const api = createApi({
       },
       }),
 
-    // Get all reviews for a property
-    getPropertyReviews: build.query<
-    {
-      id: number;
-      content: string;
-      rating: number;
-      tenant: {
-        id: number;
-        name: string;
-      };
-    }[],
-    number
-    >({
-    query: (propertyId) => `/reviews/${propertyId}`,
-    providesTags: ["PropertyDetails"],
-    async onQueryStarted(_, { queryFulfilled }) {
-      await withToast(queryFulfilled, {
-        error: "Failed to fetch reviews.",
-      });
-    },
+    // Get reviews for a property
+    getPropertyReviews: build.query({
+      query: (propertyId) => `/reviews/${propertyId}`,
+      providesTags: ["PropertyDetails"],
     }),
   }),
 });
