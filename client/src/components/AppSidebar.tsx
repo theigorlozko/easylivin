@@ -18,6 +18,7 @@ import {
   Menu,
   Plus,
   Settings,
+  User,
   X,
 } from "lucide-react";
 import { NAVBAR_HEIGHT } from "@/lib/constants";
@@ -32,6 +33,7 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
     userType === "manager"
       ? [
           { icon: Map, label: "Discover", href: "/search" },
+          { icon: User, label: "My Profile", href: "/managers/profile" },
           { icon: Building, label: "Properties", href: "/managers/properties" },
           { icon: Plus, label: "Properties", href: "/managers/newproperty" },
           { icon: FileText, label: "Applications", href: "/managers/applications"},

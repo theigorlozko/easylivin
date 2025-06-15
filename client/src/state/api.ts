@@ -224,6 +224,9 @@ export const api = createApi({
         });
       },
     }),
+    getManagers: build.query<Manager, string>({
+      query: (cognitoId) => `managers/${cognitoId}`,
+    }),
 
     updateManagerSettings: build.mutation<
       Manager,
@@ -402,5 +405,6 @@ export const {
   useCreateApplicationMutation,
   useCreateReviewMutation, 
   useGetPropertyReviewsQuery,
-  useUpdatePropertyMutation
+  useUpdatePropertyMutation,
+  useGetManagersQuery
 } = api;

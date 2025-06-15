@@ -64,7 +64,7 @@ const ContactWidget = ({ onOpenModal, property }: ContactWidgetProps) => {
       {authUser && (
         <Link key={manager.cognitoId} href={`/managers/profile/${manager.cognitoId}`} scroll={false}>
         <div
-          className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 p-3 rounded-xl border border-gray-200 transition"
+          className="flex items-center gap-4 cursor-pointer hover:bg-green-50 p-3 rounded-xl border border-gray-200 transition"
         >
           <Avatar className="w-10 h-10">
             <AvatarImage src={manager.image} />
@@ -73,7 +73,7 @@ const ContactWidget = ({ onOpenModal, property }: ContactWidgetProps) => {
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm text-gray-600">Listed by</p>
+            <p className="text-md text-gray-600">View Manager Profile</p>
             <p className="text-lg font-semibold text-gray-800">
               {manager.name || "Unnamed Manager"}
             </p>

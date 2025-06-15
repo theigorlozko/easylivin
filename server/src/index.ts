@@ -34,7 +34,7 @@ app.use("/properties", propertyRoutes);
 app.use("/leases", leaseRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/tenants", authMiddleware(["tenant"]), tenantRoutes);
-app.use("/managers", authMiddleware(["manager"]), managerRoutes);
+app.use("/managers", managerRoutes);
 
 /* SERVER */
 const port = Number(process.env.PORT) || 3002;

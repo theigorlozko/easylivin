@@ -10,19 +10,30 @@ export const getManager = async (
 ): Promise<void> => {
   try {
     const { cognitoId } = req.params;
+
     const manager = await prisma.manager.findUnique({
       where: { cognitoId },
+      include: {
+        managedProperties: {
+          include: {
+            reviews: true, // fetch all reviews per property
+            location: true,
+          },
+        },
+      },
     });
 
-    if (manager) {
-      res.json(manager);
-    } else {
+    if (!manager) {
       res.status(404).json({ message: "Manager not found" });
+      return;
     }
+
+    // Flatten all reviews from all managed properties
+    const allReviews = manager.managedProperties.flatMap((property) => property.reviews);
+
+    res.json({ ...manager, reviews: allReviews });
   } catch (error: any) {
-    res
-      .status(500)
-      .json({ message: `Error retrieving manager: ${error.message}` });
+    res.status(500).json({ message: `Error retrieving manager: ${error.message}` });
   }
 };
 
