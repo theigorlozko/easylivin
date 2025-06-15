@@ -359,11 +359,11 @@ const NewProperty = () => {
                     label="Security Deposit"
                     type="number"
                   />
-                  <CustomFormField
+                  {/* <CustomFormField
                     name="applicationFee"
                     label="Application Fee"
                     type="number"
-                  />
+                  /> */}
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
                   <CustomFormField
@@ -445,7 +445,7 @@ const NewProperty = () => {
                 <CustomFormField name="city" label="City" className="w-full" />
                 <CustomFormField
                   name="state"
-                  label="State"
+                  label="County"
                   className="w-full"
                 />
                 <CustomFormField

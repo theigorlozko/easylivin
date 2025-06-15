@@ -10,6 +10,7 @@ import { Property } from "@/types/prismaTypes";
 import Card from "@/components/Card";
 import React from "react";
 import CardCompact from "@/components/CardCompact";
+import Link from "next/link";
 
 const Listings = () => {
   const { data: authUser } = useGetAuthUserQuery();
@@ -62,6 +63,7 @@ const Listings = () => {
       <div className="flex">
         <div className=" w-full">
           {properties?.map((property) =>
+          <Link key={property.id} href={`/search/${property.id}`} scroll={false}>
               <Card
                 key={property.id}
                 property={property}
@@ -75,8 +77,9 @@ const Listings = () => {
                   userRole === "tenant" && handleFavoriteToggle(property.id)
                 }
                 showFavoriteButton={userRole === "tenant"}
-                propertyLink={`/search/${property.id}`}
+                // propertyLink={`/search/${property.id}`}
               />
+              </Link>
           )}
         </div>
       </div>

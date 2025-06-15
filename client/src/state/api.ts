@@ -370,6 +370,15 @@ export const api = createApi({
       query: (propertyId) => `/reviews/${propertyId}`,
       providesTags: ["PropertyDetails"],
     }),
+
+    updateProperty: build.mutation({
+      query: ({ id, ...updatedProperty }) => ({
+        url: `/properties/${id}`,
+        method: "PUT",
+        body: updatedProperty,
+      }),
+      invalidatesTags: ["Properties"],
+    }),
   }),
 });
 
@@ -392,5 +401,6 @@ export const {
   useUpdateApplicationStatusMutation,
   useCreateApplicationMutation,
   useCreateReviewMutation, 
-  useGetPropertyReviewsQuery 
+  useGetPropertyReviewsQuery,
+  useUpdatePropertyMutation
 } = api;

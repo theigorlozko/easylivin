@@ -43,6 +43,11 @@ export const propertySchema = z.object({
   laundry: z.array(z.string()).optional(),
   securityFeatures: z.array(z.string()).optional(),
   outdoorSpace: z.array(z.string()).optional(),
+  // fullAddress: z.string().min(1, "Full address is required"),
+  // coordinates: z.object({
+  //   lat: z.number(),
+  //   lng: z.number(),
+  // }),
 });
 
 export type PropertyFormData = z.infer<typeof propertySchema>;

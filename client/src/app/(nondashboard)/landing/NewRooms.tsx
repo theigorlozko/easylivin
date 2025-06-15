@@ -5,6 +5,7 @@ import { useGetAuthUserQuery, useGetPropertiesQuery, useGetTenantQuery, useAddFa
 import { useAppSelector } from "@/state/redux";
 import { Property } from "@/types/prismaTypes";
 import Card from "@/components/Card";
+import Link from "next/link";
 
 const NewRooms = () => {
   const { data: authUser } = useGetAuthUserQuery();
@@ -61,20 +62,22 @@ const NewRooms = () => {
           )
           .slice(0, 15)
           .map((property: Property) => (
-            <Card
-              key={property.id}
-              property={property}
-              isFavorite={
-                userRole === "tenant" &&
-                tenant?.favorites?.some((fav: Property) => fav.id === property.id)
-              }
-              onFavoriteToggle={() =>
-                userRole === "tenant" && handleFavoriteToggle(property.id)
-              }
-              showFavoriteButton={userRole === "tenant"}
-              propertyLink={`/search/${property.id}`}
-            />
-          ))}
+            <Link key={property.id} href={`/search/${property.id}`} scroll={false}>
+              <Card
+                property={property}
+                isFavorite={
+                  userRole === "tenant" &&
+                  tenant?.favorites?.some((fav: Property) => fav.id === property.id)
+                }
+                onFavoriteToggle={() =>
+                  userRole === "tenant" && handleFavoriteToggle(property.id)
+                }
+                showFavoriteButton={userRole === "tenant"}
+              />
+            </Link>
+          ))
+}
+          
       </div>
 
       <div className="mt-8 text-center">

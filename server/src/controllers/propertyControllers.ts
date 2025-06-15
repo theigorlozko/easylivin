@@ -160,6 +160,14 @@ export const getProperty = async (
       where: { id: Number(id) },
       include: {
         location: true,
+        manager: {
+          select: {
+            cognitoId: true,
+            name: true,
+            email: true,
+            phoneNumber: true,
+          },
+        },
       },
     });
 
@@ -348,5 +356,23 @@ console.log(req.body); // see what’s actually coming in
     res
       .status(500)
       .json({ message: `Error creating property: ${err.message}` });
+  }
+};
+
+
+export const updateProperty = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const propertyData = req.body;
+
+    const updatedProperty = await prisma.property.update({
+      where: { id: Number(id) },
+      data: propertyData,
+    });
+
+    res.status(200).json(updatedProperty);
+  } catch (error: any) {
+    console.error("Error updating property:", error);
+    res.status(500).json({ message: `Error updating property: ${error.message}` });
   }
 };

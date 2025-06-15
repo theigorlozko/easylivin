@@ -1,6 +1,5 @@
 import { Bed, Calendar, Heart, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 
 const Card = ({
@@ -8,41 +7,39 @@ const Card = ({
   isFavorite,
   onFavoriteToggle,
   showFavoriteButton = true,
-  propertyLink,
 }: CardProps) => {
   const [imgSrc, setImgSrc] = useState(
     property.photoUrls?.[0] || "/placeholder.jpg"
   );
 
-  const formattedDate = new Date(property.availableFrom).toLocaleDateString("en-IE", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
+  const formattedDate = new Date(property.availableFrom).toLocaleDateString(
+    "en-IE",
+    {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    }
+  );
 
   return (
-    <div className="relative group w-full">
-  {/* Favorite button must be here, above the Link */}
-  {showFavoriteButton && (
-    <button
-      className="absolute top-4 right-4 bg-white hover:bg-white/90 rounded-full p-2 cursor-pointer z-30 shadow-md"
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onFavoriteToggle();
-      }}
-    >
-      <Heart
-        className={`w-5 h-5 ${
-          isFavorite ? "text-red-500 fill-red-500" : "text-gray-600"
-        }`}
-      />
-    </button>
-  )}
+    <div className="relative group  bg-white rounded-xl overflow-hidden shadow-lg w-full mb-5">
+      {showFavoriteButton && (
+        <button
+          className="absolute top-4 right-4 bg-white hover:bg-white/90 rounded-full p-2 cursor-pointer z-30 shadow-md"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onFavoriteToggle();
+          }}
+        >
+          <Heart
+            className={`w-5 h-5 ${
+              isFavorite ? "text-red-500 fill-red-500" : "text-gray-600"
+            }`}
+          />
+        </button>
+      )}
 
-  {/* Clickable card */}
-  <Link href={propertyLink ?? "#"} scroll={false}>
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg w-full mb-5">
       <div className="relative">
         <div className="w-full h-48 relative">
           <Image
@@ -70,7 +67,7 @@ const Card = ({
       </div>
 
       <div className="p-4">
-        <h2 className="text-xl font-bold mb-1 text-gray-900 ">
+        <h2 className="text-xl font-bold mb-1 text-gray-900">
           {property.name}
         </h2>
         <p className="text-gray-600 mb-2">
@@ -102,8 +99,6 @@ const Card = ({
         </div>
       </div>
     </div>
-  </Link>
-</div>
   );
 };
 

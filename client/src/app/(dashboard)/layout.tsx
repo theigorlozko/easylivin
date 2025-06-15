@@ -14,26 +14,26 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (authUser) {
-      const userRole = authUser.userRole?.toLowerCase();
-      if (
-        (userRole === "manager" && pathname.startsWith("/tenants")) ||
-        (userRole === "tenant" && pathname.startsWith("/managers"))
-      ) {
-        router.push(
-          userRole === "manager"
-            ? "/managers/properties"
-            : "/tenants/favorites",
-          { scroll: false }
-        );
-      } else {
-        setIsLoading(false);
-      }
-    }
-  }, [authUser, router, pathname]);
+  // useEffect(() => {
+  //   if (authUser) {
+  //     const userRole = authUser.userRole?.toLowerCase();
+  //     if (
+  //       (userRole === "manager" && pathname.startsWith("/tenants")) ||
+  //       (userRole === "tenant" && pathname.startsWith("/managers"))
+  //     ) {
+  //       router.push(
+  //         userRole === "manager"
+  //           ? "/managers/properties"
+  //           : "/tenants/favorites",
+  //         { scroll: false }
+  //       );
+  //     } else {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  // }, [authUser, router, pathname]);
 
-  if (authLoading || isLoading) return <>Loading...</>;
+  // if (authLoading || isLoading) return <>Loading...</>;
   if (!authUser?.userRole) return null;
 
   return (
